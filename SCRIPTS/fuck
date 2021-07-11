@@ -1,0 +1,18 @@
+#!/bin/sh
+# From QiuSimons
+
+cd /overlay
+rm -rf `ls | egrep -v '(upper|.fs_state)'`
+cd /overlay/upper
+rm -rf `ls | egrep -v '(etc|usr|www)'`
+cd /overlay/upper/etc
+rm -rf `ls | egrep -v '(config|ssrplus|smartdns|bench.log|passwd|shadow|sysupgrade.conf)'`
+cd /overlay/upper/etc/config
+rm -rf `ls | egrep -v '(arpbind|autoreboot|dhcp|firewall|frp|frps|fstab|network|oled|shadowsocksr|serverchan|smartdns|system|tencentddns|unblockneteasemusic|upnpd)'`
+cd /overlay/upper/usr
+rm -rf `ls | egrep -v '(share)'`
+cd /overlay/upper/usr/share
+rm -rf `ls | egrep -v '(unblockneteasemusic)'`
+cd /overlay/upper/www/luci-static
+rm -rf `ls | egrep -v '(argon)'`
+sleep 5 && touch /etc/banner && reboot

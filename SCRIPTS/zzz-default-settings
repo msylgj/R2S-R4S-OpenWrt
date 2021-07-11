@@ -1,0 +1,69 @@
+#!/bin/sh
+
+#自动语言
+uci set luci.main.lang=auto
+uci commit luci
+
+#自动挂载
+uci set fstab.@global[0].anon_mount=1
+uci commit fstab
+
+#Argon 主题
+uci set luci.main.mediaurlbase='/luci-static/argon'
+uci commit luci
+
+#时区设置
+uci set system.@system[0].timezone=CST-8
+uci set system.@system[0].zonename=Asia/Shanghai
+uci commit system
+
+#Feeds 更换镜像源
+sed -i 's#https://downloads.openwrt.org#https://mirrors.tencent.com/lede#g' /etc/opkg/distfeeds.conf
+
+#使用bash替代ash
+[ -f '/bin/bash' ] && sed -i 's|root:x:0:0:root:/root:/bin/ash|root:x:0:0:root:/root:/bin/bash|g' /etc/passwd
+
+#uhttpd 设置
+uci set uhttpd.main.rfc1918_filter=0
+uci set uhttpd.main.redirect_https=0
+uci commit uhttpd
+/etc/init.d/uhttpd restart
+
+#默认开启 Packet Steering
+uci set network.globals.packet_steering='1'
+uci commit network
+
+#通用即插即用
+uci set upnpd.config.igdv1='1'
+uci set upnpd.config.enabled='1'
+uci set upnpd.config.external_iface='WAN'
+uci commit upnpd
+
+#SSRP
+uci set shadowsocksr.@global[0].gfwlist_url='https://cdn.jsdelivr.net/gh/Loyalsoldier/v2ray-rules-dat@release/gfw.txt'
+uci set shadowsocksr.@global[0].chnroute_url='https://cdn.jsdelivr.net/gh/QiuSimons/Chnroute@master/dist/chnroute/chnroute.txt'
+uci commit shadowsocksr
+
+#dnsmasq 设置以及开启 IPv6
+uci set dhcp.lan.ra='hybrid'
+uci set dhcp.lan.ndp='hybrid'
+uci set dhcp.lan.dhcpv6='hybrid'
+uci set dhcp.@dnsmasq[0].rebind_protection='0'
+uci del dhcp.@dnsmasq[0].filter_aaaa
+uci commit dhcp
+sed -i '/log-facility/d' /etc/dnsmasq.conf
+echo "log-facility=/dev/null" >> /etc/dnsmasq.conf
+
+#计划任务
+uci set system.@system[0].cronloglevel="9"
+uci commit system
+/etc/init.d/cron restart
+
+#清理内存缓存
+#sync; echo 3 > /proc/sys/vm/drop_caches
+
+#清除 LuCI 残留缓存
+rm -rf /tmp/luci-modulecache
+rm -f /tmp/luci-indexcache
+
+exit 0
