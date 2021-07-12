@@ -21,7 +21,6 @@ sed -i 's/Os/O3/g' include/target.mk
 
 ### 必要的 Patches ###
 # Try to backport patches
-rm -rf target/linux/rockchip/patches-5.13
 cp -rf ../patches-5.13 target/linux/rockchip/patches-5.13
 # hw_random support
 svn co https://github.com/immortalwrt/immortalwrt/branches/master/target/linux/rockchip/files/drivers/char/hw_random target/linux/rockchip/files/drivers/char/hw_random
