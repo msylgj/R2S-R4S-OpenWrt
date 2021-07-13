@@ -30,6 +30,7 @@ wget -P target/linux/generic/hack-5.13 https://github.com/immortalwrt/immortalwr
 wget -q https://github.com/QiuSimons/R2S-R4S-X86-OpenWrt/raw/master/PATCH/new/package/use_json_object_new_int64.patch
 patch -p1 < ./use_json_object_new_int64.patch
 # firewall: add fullconenat patch
+wget -P target/linux/generic/hack-5.13 https://github.com/immortalwrt/immortalwrt/raw/master/target/linux/generic/hack-5.10/952-net-conntrack-events-support-multiple-registrant.patch
 wget -P package/network/config/firewall/patches https://github.com/immortalwrt/immortalwrt/raw/master/package/network/config/firewall/patches/fullconenat.patch
 # fix firewall flock
 patch -p1 < ../SCRIPTS/fix_firewall_flock.patch

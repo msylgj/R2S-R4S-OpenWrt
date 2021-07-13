@@ -36,7 +36,6 @@ uci commit network
 #通用即插即用
 uci set upnpd.config.igdv1='1'
 uci set upnpd.config.enabled='1'
-uci set upnpd.config.external_iface='WAN'
 uci commit upnpd
 
 #SSRP
