@@ -1,4 +1,4 @@
-name: R4S Openwrt Master With Kernel-5.13
+name: R4S Openwrt Master With Kernel-5.14
 
 on:
   push:

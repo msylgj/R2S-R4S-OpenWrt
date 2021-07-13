@@ -18,8 +18,8 @@
 - pdnsd-alt编译失败,ssrp和turboacc需要用dnsproxy替代(推荐)
 ## 说明
 * openwrt master branch-SNAPSHOT
-* Linux-kernel: 5.13.x
-* Fork自mj大佬linux-5.13分支(非常感谢大佬迁移内核适配),整合immortalwrt项目部分patch和luci/packages,个人根据**完全私人**口味进行了一定修改,建议去源库了解更多
+* Linux-kernel: 5.14.x
+* Fork自mj大佬linux-5.14分支(非常感谢大佬迁移内核适配),整合immortalwrt项目部分patch和luci/packages,个人根据**完全私人**口味进行了一定修改,建议去源库了解更多
     - [mj22226](https://github.com/mj22226/openwrt)
     - [immortalwrt](https://github.com/immortalwrt/immortalwrt)
 * ipv4: 192.168.2.1

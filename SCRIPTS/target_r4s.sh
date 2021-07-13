@@ -41,7 +41,7 @@ CONFIG_CRYPTO_CHACHA20_NEON=y
 CONFIG_CRYPTO_POLY1305_NEON=y
 CONFIG_CRYPTO_NHPOLY1305_NEON=y
 CONFIG_CRYPTO_AES_ARM64_BS=y
-' >> ./target/linux/rockchip/armv8/config-5.13
+' >> ./target/linux/rockchip/armv8/config-5.14
 
 chmod -R 755 ./
 

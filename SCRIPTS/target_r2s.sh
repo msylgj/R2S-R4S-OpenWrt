@@ -50,7 +50,7 @@ CONFIG_CRYPTO_SHA512_ARM64=y
 # CONFIG_CRYPTO_SHA512_ARM64_CE is not set
 CONFIG_CRYPTO_SM3_ARM64_CE=y
 CONFIG_CRYPTO_SM4_ARM64_CE=y
-' >> ./target/linux/rockchip/armv8/config-5.13
+' >> ./target/linux/rockchip/armv8/config-5.14
 
 chmod -R 755 ./
 

@@ -21,16 +21,16 @@ sed -i 's/Os/O3/g' include/target.mk
 
 ### 必要的 Patches ###
 # Try to backport patches
-cp -rf ../patches-5.13 target/linux/rockchip/patches-5.13
+cp -rf ../patches-5.14 target/linux/rockchip/patches-5.14
 # hw_random support
 svn co https://github.com/immortalwrt/immortalwrt/branches/master/target/linux/rockchip/files/drivers/char/hw_random target/linux/rockchip/files/drivers/char/hw_random
 # Patch arm64 型号名称
-wget -P target/linux/generic/hack-5.13 https://github.com/immortalwrt/immortalwrt/raw/master/target/linux/generic/hack-5.10/312-arm64-cpuinfo-Add-model-name-in-proc-cpuinfo-for-64bit-ta.patch
+wget -P target/linux/generic/hack-5.14 https://github.com/immortalwrt/immortalwrt/raw/master/target/linux/generic/hack-5.10/312-arm64-cpuinfo-Add-model-name-in-proc-cpuinfo-for-64bit-ta.patch
 # Patch jsonc
 wget -q https://github.com/QiuSimons/R2S-R4S-X86-OpenWrt/raw/master/PATCH/new/package/use_json_object_new_int64.patch
 patch -p1 < ./use_json_object_new_int64.patch
 # firewall: add fullconenat patch
-wget -P target/linux/generic/hack-5.13 https://github.com/immortalwrt/immortalwrt/raw/master/target/linux/generic/hack-5.10/952-net-conntrack-events-support-multiple-registrant.patch
+wget -P target/linux/generic/hack-5.14 https://github.com/immortalwrt/immortalwrt/raw/master/target/linux/generic/hack-5.10/952-net-conntrack-events-support-multiple-registrant.patch
 wget -P package/network/config/firewall/patches https://github.com/immortalwrt/immortalwrt/raw/master/package/network/config/firewall/patches/fullconenat.patch
 # fix firewall flock
 patch -p1 < ../SCRIPTS/fix_firewall_flock.patch
