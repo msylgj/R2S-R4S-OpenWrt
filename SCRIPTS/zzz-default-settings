@@ -43,12 +43,8 @@ uci set shadowsocksr.@global[0].gfwlist_url='https://cdn.jsdelivr.net/gh/Loyalso
 uci set shadowsocksr.@global[0].chnroute_url='https://cdn.jsdelivr.net/gh/QiuSimons/Chnroute@master/dist/chnroute/chnroute.txt'
 uci commit shadowsocksr
 
-#dnsmasq 设置以及开启 IPv6
-uci set dhcp.lan.ra='hybrid'
-uci set dhcp.lan.ndp='hybrid'
-uci set dhcp.lan.dhcpv6='hybrid'
+#dnsmasq 设置
 uci set dhcp.@dnsmasq[0].rebind_protection='0'
-uci del dhcp.@dnsmasq[0].filter_aaaa
 uci commit dhcp
 sed -i '/log-facility/d' /etc/dnsmasq.conf
 echo "log-facility=/dev/null" >> /etc/dnsmasq.conf
