@@ -272,7 +272,7 @@
  	struct nf_conn *ct = item->ct;
  	struct sk_buff *skb;
  	unsigned int type;
-@@ -3785,9 +3792,15 @@ static int ctnetlink_stat_exp_cpu(struct
+@@ -3707,9 +3714,15 @@ static int ctnetlink_stat_exp_cpu(struct
  }
  
  #ifdef CONFIG_NF_CONNTRACK_EVENTS
