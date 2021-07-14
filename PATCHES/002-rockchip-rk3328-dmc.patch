@@ -12,11 +12,11 @@ Subject: [PATCH] rockchip-rk3328-dmc
 	new file:   target/linux/rockchip/files/include/dt-bindings/memory/rk3328-dram.h
 	modified:   target/linux/rockchip/image/Makefile
 	modified:   target/linux/rockchip/image/armv8.mk
-	new file:   target/linux/rockchip/patches-5.13/803-PM-devfreq-rockchip-add-devfreq-driver-for-rk3328-dmc.patch
-	new file:   target/linux/rockchip/patches-5.13/804-clk-rockchip-support-setting-ddr-clock-via-SIP-Version-2-.patch
-	new file:   target/linux/rockchip/patches-5.13/805-PM-devfreq-rockchip-dfi-add-more-soc-support.patch
-	new file:   target/linux/rockchip/patches-5.13/806-arm64-dts-rockchip-rk3328-add-dfi-node.patch
-	new file:   target/linux/rockchip/patches-5.13/807-arm64-dts-nanopi-r2s-add-rk3328-dmc-relate-node.patch
+	new file:   target/linux/rockchip/patches-5.14/803-PM-devfreq-rockchip-add-devfreq-driver-for-rk3328-dmc.patch
+	new file:   target/linux/rockchip/patches-5.14/804-clk-rockchip-support-setting-ddr-clock-via-SIP-Version-2-.patch
+	new file:   target/linux/rockchip/patches-5.14/805-PM-devfreq-rockchip-dfi-add-more-soc-support.patch
+	new file:   target/linux/rockchip/patches-5.14/806-arm64-dts-rockchip-rk3328-add-dfi-node.patch
+	new file:   target/linux/rockchip/patches-5.14/807-arm64-dts-nanopi-r2s-add-rk3328-dmc-relate-node.patch
 ---
  .../boot/arm-trusted-firmware-rk3328/Makefile |  55 ++
  .../arm-trusted-firmware-rk3328/src/trust.ini |  15 +
@@ -39,11 +39,11 @@ Subject: [PATCH] rockchip-rk3328-dmc
  create mode 100644 target/linux/rockchip/files/drivers/devfreq/rk3328_dmc.c
  create mode 100644 target/linux/rockchip/files/include/dt-bindings/clock/rockchip-ddr.h
  create mode 100644 target/linux/rockchip/files/include/dt-bindings/memory/rk3328-dram.h
- create mode 100644 target/linux/rockchip/patches-5.13/803-PM-devfreq-rockchip-add-devfreq-driver-for-rk3328-dmc.patch
- create mode 100644 target/linux/rockchip/patches-5.13/804-clk-rockchip-support-setting-ddr-clock-via-SIP-Version-2-.patch
- create mode 100644 target/linux/rockchip/patches-5.13/805-PM-devfreq-rockchip-dfi-add-more-soc-support.patch
- create mode 100644 target/linux/rockchip/patches-5.13/806-arm64-dts-rockchip-rk3328-add-dfi-node.patch
- create mode 100644 target/linux/rockchip/patches-5.13/807-arm64-dts-nanopi-r2s-add-rk3328-dmc-relate-node.patch
+ create mode 100644 target/linux/rockchip/patches-5.14/803-PM-devfreq-rockchip-add-devfreq-driver-for-rk3328-dmc.patch
+ create mode 100644 target/linux/rockchip/patches-5.14/804-clk-rockchip-support-setting-ddr-clock-via-SIP-Version-2-.patch
+ create mode 100644 target/linux/rockchip/patches-5.14/805-PM-devfreq-rockchip-dfi-add-more-soc-support.patch
+ create mode 100644 target/linux/rockchip/patches-5.14/806-arm64-dts-rockchip-rk3328-add-dfi-node.patch
+ create mode 100644 target/linux/rockchip/patches-5.14/807-arm64-dts-nanopi-r2s-add-rk3328-dmc-relate-node.patch
 
 diff --git a/package/boot/arm-trusted-firmware-rk3328/Makefile b/package/boot/arm-trusted-firmware-rk3328/Makefile
 new file mode 100644
@@ -1614,11 +1614,11 @@ index ee411d266b..e255970f28 100644
    DEVICE_PACKAGES := kmod-usb-net-rtl8152
  endef
  TARGET_DEVICES += friendlyarm_nanopi-r2s
-diff --git a/target/linux/rockchip/patches-5.13/803-PM-devfreq-rockchip-add-devfreq-driver-for-rk3328-dmc.patch b/target/linux/rockchip/patches-5.13/803-PM-devfreq-rockchip-add-devfreq-driver-for-rk3328-dmc.patch
+diff --git a/target/linux/rockchip/patches-5.14/803-PM-devfreq-rockchip-add-devfreq-driver-for-rk3328-dmc.patch b/target/linux/rockchip/patches-5.14/803-PM-devfreq-rockchip-add-devfreq-driver-for-rk3328-dmc.patch
 new file mode 100644
 index 0000000000..a4b8340be4
 --- /dev/null
-+++ b/target/linux/rockchip/patches-5.13/803-PM-devfreq-rockchip-add-devfreq-driver-for-rk3328-dmc.patch
++++ b/target/linux/rockchip/patches-5.14/803-PM-devfreq-rockchip-add-devfreq-driver-for-rk3328-dmc.patch
 @@ -0,0 +1,44 @@
 +From fcd9629c05f373771e85920e1c1d0ab252617878 Mon Sep 17 00:00:00 2001
 +From: hmz007 <hmz007@gmail.com>
@@ -1664,11 +1664,11 @@ index 0000000000..a4b8340be4
 + obj-$(CONFIG_ARM_TEGRA_DEVFREQ)		+= tegra30-devfreq.o
 + obj-$(CONFIG_ARM_TEGRA20_DEVFREQ)	+= tegra20-devfreq.o
 + 
-diff --git a/target/linux/rockchip/patches-5.13/804-clk-rockchip-support-setting-ddr-clock-via-SIP-Version-2-.patch b/target/linux/rockchip/patches-5.13/804-clk-rockchip-support-setting-ddr-clock-via-SIP-Version-2-.patch
+diff --git a/target/linux/rockchip/patches-5.14/804-clk-rockchip-support-setting-ddr-clock-via-SIP-Version-2-.patch b/target/linux/rockchip/patches-5.14/804-clk-rockchip-support-setting-ddr-clock-via-SIP-Version-2-.patch
 new file mode 100644
 index 0000000000..4e688f8eb4
 --- /dev/null
-+++ b/target/linux/rockchip/patches-5.13/804-clk-rockchip-support-setting-ddr-clock-via-SIP-Version-2-.patch
++++ b/target/linux/rockchip/patches-5.14/804-clk-rockchip-support-setting-ddr-clock-via-SIP-Version-2-.patch
 @@ -0,0 +1,218 @@
 +From ce6d3614888e6358466f0e84e248177a6bca5258 Mon Sep 17 00:00:00 2001
 +From: Tang Yun ping <typ@rock-chips.com>
@@ -1888,11 +1888,11 @@ index 0000000000..4e688f8eb4
 ++} share_page_type_t;
 + 
 + #endif
-diff --git a/target/linux/rockchip/patches-5.13/805-PM-devfreq-rockchip-dfi-add-more-soc-support.patch b/target/linux/rockchip/patches-5.13/805-PM-devfreq-rockchip-dfi-add-more-soc-support.patch
+diff --git a/target/linux/rockchip/patches-5.14/805-PM-devfreq-rockchip-dfi-add-more-soc-support.patch b/target/linux/rockchip/patches-5.14/805-PM-devfreq-rockchip-dfi-add-more-soc-support.patch
 new file mode 100644
 index 0000000000..283e4abd2f
 --- /dev/null
-+++ b/target/linux/rockchip/patches-5.13/805-PM-devfreq-rockchip-dfi-add-more-soc-support.patch
++++ b/target/linux/rockchip/patches-5.14/805-PM-devfreq-rockchip-dfi-add-more-soc-support.patch
 @@ -0,0 +1,662 @@
 +From 4db93c6dad0c71750b86163df2fdb21c35f00d9a Mon Sep 17 00:00:00 2001
 +From: hmz007 <hmz007@gmail.com>
@@ -2556,11 +2556,11 @@ index 0000000000..283e4abd2f
 + 		return PTR_ERR(data->edev);
 + 	}
 + 
-diff --git a/target/linux/rockchip/patches-5.13/806-arm64-dts-rockchip-rk3328-add-dfi-node.patch b/target/linux/rockchip/patches-5.13/806-arm64-dts-rockchip-rk3328-add-dfi-node.patch
+diff --git a/target/linux/rockchip/patches-5.14/806-arm64-dts-rockchip-rk3328-add-dfi-node.patch b/target/linux/rockchip/patches-5.14/806-arm64-dts-rockchip-rk3328-add-dfi-node.patch
 new file mode 100644
 index 0000000000..8a5222da22
 --- /dev/null
-+++ b/target/linux/rockchip/patches-5.13/806-arm64-dts-rockchip-rk3328-add-dfi-node.patch
++++ b/target/linux/rockchip/patches-5.14/806-arm64-dts-rockchip-rk3328-add-dfi-node.patch
 @@ -0,0 +1,27 @@
 +From f9ae6e992d3d9e80357fee7d65ba0fe2dd37ae1f Mon Sep 17 00:00:00 2001
 +From: hmz007 <hmz007@gmail.com>
@@ -2589,11 +2589,11 @@ index 0000000000..8a5222da22
 + 	gic: interrupt-controller@ff811000 {
 + 		compatible = "arm,gic-400";
 + 		#interrupt-cells = <3>;
-diff --git a/target/linux/rockchip/patches-5.13/807-arm64-dts-nanopi-r2s-add-rk3328-dmc-relate-node.patch b/target/linux/rockchip/patches-5.13/807-arm64-dts-nanopi-r2s-add-rk3328-dmc-relate-node.patch
+diff --git a/target/linux/rockchip/patches-5.14/807-arm64-dts-nanopi-r2s-add-rk3328-dmc-relate-node.patch b/target/linux/rockchip/patches-5.14/807-arm64-dts-nanopi-r2s-add-rk3328-dmc-relate-node.patch
 new file mode 100644
 index 0000000000..d93b9a77b2
 --- /dev/null
-+++ b/target/linux/rockchip/patches-5.13/807-arm64-dts-nanopi-r2s-add-rk3328-dmc-relate-node.patch
++++ b/target/linux/rockchip/patches-5.14/807-arm64-dts-nanopi-r2s-add-rk3328-dmc-relate-node.patch
 @@ -0,0 +1,126 @@
 +From f9ae6e992d3d9e80357fee7d65ba0fe2dd37ae1f Mon Sep 17 00:00:00 2001
 +From: hmz007 <hmz007@gmail.com>

@@ -2,7 +2,7 @@
 clear
 
 # rockchip-rk3328-dmc
-patch -p1 < ../SCRIPTS/0003-rockchip-rk3328-dmc.patch
+patch -p1 < ../PATCHES/002-rockchip-rk3328-dmc.patch
 
 # 使用特定的优化
 sed -i 's,-mcpu=generic,-march=armv8-a+crypto+crc -mabi=lp64,g' include/target.mk
