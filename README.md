@@ -7,8 +7,8 @@
 <img alt="GitHub" src="https://img.shields.io/github/license/msylgj/R2S-R4S-OpenWrt?style=for-the-badge">
 <p>
 <p align="center">
-<img src="https://github.com/msylgj/R2S-R4S-OpenWrt/actions/workflows/R2S-Openwrt-Master-k5.13.yml/badge.svg">
-<img src="https://github.com/msylgj/R2S-R4S-OpenWrt/actions/workflows/R4S-Openwrt-Master-k5.13.yml/badge.svg">
+<img src="https://github.com/msylgj/R2S-R4S-OpenWrt/actions/workflows/R2S-Openwrt-Master-k5.14.yml/badge.svg">
+<img src="https://github.com/msylgj/R2S-R4S-OpenWrt/actions/workflows/R4S-Openwrt-Master-k5.14.yml/badge.svg">
 <p>
 
 <h1 align="center">请勿用于商业用途!!!</h1>
