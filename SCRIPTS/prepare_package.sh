@@ -59,14 +59,8 @@ svn co https://github.com/immortalwrt/immortalwrt/branches/master/package/emorta
 pushd feeds/luci/themes/luci-theme-argon
 wget -qO - https://github.com/msylgj/luci-theme-argon/commit/0197576.patch | patch -p1
 popd
-# MAC 地址与 IP 绑定
-rm -rf ./feeds/luci/applications/luci-app-arpbind
-svn co https://github.com/msylgj/OpenWrt_luci-app/trunk/luci-app-arpbind feeds/luci/applications/luci-app-arpbind
 # DNSPod
 svn co https://github.com/msylgj/OpenWrt_luci-app/trunk/luci-app-tencentddns package/emortal/luci-app-tencentddns
-# ServerChan 微信推送
-rm -rf ./feeds/luci/applications/luci-app-serverchan
-svn co https://github.com/msylgj/OpenWrt_luci-app/trunk/luci-app-serverchan feeds/luci/applications/luci-app-serverchan
 # SSR Plus: add DNSProxy support
 rm -rf ./feeds/luci/applications/luci-app-ssr-plus
 svn co https://github.com/msylgj/helloworld/branches/dnsproxy-edns/luci-app-ssr-plus feeds/luci/applications/luci-app-ssr-plus
