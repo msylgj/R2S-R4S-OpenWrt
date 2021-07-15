@@ -58,7 +58,7 @@ jobs:
       - name: Prepare Sources
         run: |
           sudo chown -R runner:runner /home/runner/work/R2S-R4S-OpenWrt
-          git clone -b linux-5.13 --single-branch https://github.com/mj22226/openwrt.git openwrt
+          git clone -b linux-5.14 --single-branch https://github.com/mj22226/openwrt.git openwrt
       - name: Prepare Package
         run: |
           cd openwrt
@@ -122,14 +122,14 @@ jobs:
           cd ./artifact/
           gzip -d *.gz && exit 0
           gzip *.img
-          sha256sum *.gz | tee R4S-OPoA-Master-$(date +%Y-%m-%d).sha256sum
-          mv *ext4* ./R4S-OPoA-Master-$(date +%Y-%m-%d)-ext4.img.gz
-          mv *squashfs* ./R4S-OPoA-Master-$(date +%Y-%m-%d)-sfs.img.gz
+          sha256sum *.gz | tee R4S-OPoA-Master-k5.14-$(date +%Y-%m-%d).sha256sum
+          mv *ext4* ./R4S-OPoA-Master-k5.14-$(date +%Y-%m-%d)-ext4.img.gz
+          mv *squashfs* ./R4S-OPoA-Master-k5.14-$(date +%Y-%m-%d)-sfs.img.gz
           cd ../openwrt
           cp .config ../artifact/R4S-config-full.seed
           ./scripts/diffconfig.sh > ../artifact/R4S-config-diff.seed
-          artifact_tag="R4S-OPoA-Master-$(date +%Y-%m-%d)"
-          release_tag="R2S-R4S-OPoA-Master-$(date +%Y-%m-%d)"
+          artifact_tag="R4S-OPoA-Master-k5.14-$(date +%Y-%m-%d)"
+          release_tag="R2S-R4S-OPoA-Master-k5.14-$(date +%Y-%m-%d)"
           echo "##[set-output name=artifact_tag;]$artifact_tag"
           echo "##[set-output name=release_tag;]$release_tag"
       - name: Upload Artifact
