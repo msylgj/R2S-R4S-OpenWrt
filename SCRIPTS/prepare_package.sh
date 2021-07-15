@@ -35,8 +35,8 @@ wget -P package/network/config/firewall/patches https://github.com/immortalwrt/i
 # fix firewall flock
 patch -p1 < ../PATCHES/001-fix-firewall-flock.patch
 # patch dnsmasq
-wget -P package/network/services/dnsmasq/patches https://github.com/immortalwrt/immortalwrt/raw/master/package/network/config/firewall/patches/910-mini-ttl.patch
-wget -P package/network/services/dnsmasq/patches https://github.com/immortalwrt/immortalwrt/raw/master/package/network/config/firewall/patches/911-dnsmasq-filter-aaaa.patch
+wget -P package/network/services/dnsmasq/patches https://github.com/immortalwrt/immortalwrt/raw/master/package/network/services/dnsmasq/patches/910-mini-ttl.patch
+wget -P package/network/services/dnsmasq/patches https://github.com/immortalwrt/immortalwrt/raw/master/package/network/services/dnsmasq/patches/911-dnsmasq-filter-aaaa.patch
 
 ### 获取额外的Packages ###
 # UPX 可执行软件压缩
