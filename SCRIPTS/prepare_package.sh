@@ -27,7 +27,7 @@ svn co https://github.com/immortalwrt/immortalwrt/branches/master/target/linux/r
 # Patch arm64 型号名称
 wget -P target/linux/generic/hack-5.14 https://github.com/immortalwrt/immortalwrt/raw/master/target/linux/generic/hack-5.10/312-arm64-cpuinfo-Add-model-name-in-proc-cpuinfo-for-64bit-ta.patch
 # Patch jsonc
-wget -q https://github.com/QiuSimons/R2S-R4S-X86-OpenWrt/raw/master/PATCH/new/package/use_json_object_new_int64.patch
+wget -q https://github.com/QiuSimons/R2S-R4S-X86-OpenWrt/raw/master/PATCH/jsonc/use_json_object_new_int64.patch
 patch -p1 < ./use_json_object_new_int64.patch
 # firewall: add fullconenat patch
 cp -f ../PATCHES/952-net-conntrack-events-support-multiple-registrant.patch target/linux/generic/hack-5.14/
