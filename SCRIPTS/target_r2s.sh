@@ -16,6 +16,7 @@ sed -i "s,'eth1' 'eth0','eth0' 'eth1',g" target/linux/rockchip/armv8/base-files/
 
 # 内核设置
 echo '
+CONFIG_ARM_RK3328_DMC_DEVFREQ=y
 CONFIG_CRYPTO_DRBG=y
 CONFIG_CRYPTO_DRBG_HMAC=y
 CONFIG_CRYPTO_DRBG_MENU=y
