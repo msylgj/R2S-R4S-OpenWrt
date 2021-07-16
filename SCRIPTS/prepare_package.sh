@@ -37,8 +37,16 @@ patch -p1 < ../PATCHES/001-fix-firewall-flock.patch
 # patch dnsmasq
 wget -P package/network/services/dnsmasq/patches https://github.com/immortalwrt/immortalwrt/raw/master/package/network/services/dnsmasq/patches/910-mini-ttl.patch
 wget -P package/network/services/dnsmasq/patches https://github.com/immortalwrt/immortalwrt/raw/master/package/network/services/dnsmasq/patches/911-dnsmasq-filter-aaaa.patch
+# patch pdnsd-alt
+mkdir -p feeds/packages/net/pdnsd-alt/patches
+cp -f ../PATCHES/003-fix-pdnsd-alt-build-error-within-kernel5.14.patch feeds/packages/net/pdnsd-alt/patches/
 
 ### 获取额外的Packages ###
+# GCC11
+rm -rf ./toolchain/gcc
+svn co https://github.com/Ansuel/openwrt/branches/gcc-11/toolchain/gcc toolchain/gcc
+rm -rf ./package/libs/elfutils
+svn co https://github.com/neheb/openwrt/branches/elf/package/libs/elfutils package/libs/elfutils
 # UPX 可执行软件压缩
 sed -i '/patchelf pkgconf/i\tools-y += ucl upx' ./tools/Makefile
 sed -i '\/autoconf\/compile :=/i\$(curdir)/upx/compile := $(curdir)/ucl/compile' ./tools/Makefile
@@ -67,9 +75,6 @@ svn co https://github.com/msylgj/helloworld/branches/dnsproxy-edns/luci-app-ssr-
 # 翻译及部分功能优化
 svn co https://github.com/QiuSimons/OpenWrt-Add/trunk/addition-trans-zh package/emortal/addition-trans-zh
 cp -f ../SCRIPTS/zzz-default-settings package/emortal/addition-trans-zh/files/zzz-default-settings
-# 临时干掉pdnsd-alt 编译报错
-sed -i 's/+pdnsd-alt //g' feeds/luci/applications/luci-app-ssr-plus/Makefile
-sed -i 's/+pdnsd-alt//g' feeds/luci/applications/luci-app-turboacc/Makefile
 
 ### 最后的收尾工作 ###
 # Lets Fuck
