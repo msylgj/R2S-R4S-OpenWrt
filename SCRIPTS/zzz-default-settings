@@ -13,12 +13,19 @@ uci set luci.main.mediaurlbase='/luci-static/argon'
 uci commit luci
 
 #时区设置
-uci set system.@system[0].timezone=CST-8
-uci set system.@system[0].zonename=Asia/Shanghai
+uci -q batch <<-EOF
+	set system.@system[0].timezone='CST-8'
+	set system.@system[0].zonename='Asia/Shanghai'
+	delete system.ntp.server
+	add_list system.ntp.server='cn.ntp.org.cn'
+	add_list system.ntp.server='ntp.ntsc.ac.cn'
+	add_list system.ntp.server='time1.cloud.tencent.com'
+	add_list system.ntp.server='time1.aliyun.com'
+EOF
 uci commit system
 
 #Feeds 更换镜像源
-sed -i 's#https://downloads.openwrt.org#https://mirrors.tencent.com/lede#g' /etc/opkg/distfeeds.conf
+sed -i 's,downloads.openwrt.org,mirrors.tencent.com/lede,g' /etc/opkg/distfeeds.conf
 
 #使用bash替代ash
 [ -f '/bin/bash' ] && sed -i 's|root:x:0:0:root:/root:/bin/ash|root:x:0:0:root:/root:/bin/bash|g' /etc/passwd
