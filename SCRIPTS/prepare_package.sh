@@ -2,17 +2,6 @@
 clear
 
 ### 基础部分 ###
-# Maaaagiiiiiiiic Victoria's Secret!
-rm -f ./feeds.conf.default
-rm -f ./include/target.mk
-rm -f ./include/version.mk
-rm -f ./include/download.mk
-rm -f ./scripts/download.pl
-wget https://github.com/immortalwrt/immortalwrt/raw/master/feeds.conf.default
-wget -P include/ https://github.com/immortalwrt/immortalwrt/raw/master/include/target.mk
-wget -P include/ https://github.com/immortalwrt/immortalwrt/raw/master/include/version.mk
-wget -P include/ https://github.com/immortalwrt/immortalwrt/raw/master/include/download.mk
-wget -P scripts/ https://github.com/immortalwrt/immortalwrt/raw/master/scripts/download.pl
 # 使用 O3 级别的优化
 sed -i 's/Os/O3/g' include/target.mk
 # 更新 Feeds
@@ -20,47 +9,21 @@ sed -i 's/Os/O3/g' include/target.mk
 ./scripts/feeds install -a
 
 ### 必要的 Patches ###
-# Try to backport patches
-cp -rf ../patches-5.14 target/linux/rockchip/
-# hw_random support
-svn co https://github.com/immortalwrt/immortalwrt/branches/master/target/linux/rockchip/files/drivers/char/hw_random target/linux/rockchip/files/drivers/char/hw_random
-# Patch arm64 型号名称
-wget -P target/linux/generic/hack-5.14 https://github.com/immortalwrt/immortalwrt/raw/master/target/linux/generic/hack-5.10/312-arm64-cpuinfo-Add-model-name-in-proc-cpuinfo-for-64bit-ta.patch
 # Patch jsonc
 wget -q https://github.com/QiuSimons/R2S-R4S-X86-OpenWrt/raw/master/PATCH/jsonc/use_json_object_new_int64.patch
 patch -p1 < ./use_json_object_new_int64.patch
-# firewall: add fullconenat patch
-cp -f ../PATCHES/952-net-conntrack-events-support-multiple-registrant.patch target/linux/generic/hack-5.14/
-wget -P package/network/config/firewall/patches https://github.com/immortalwrt/immortalwrt/raw/master/package/network/config/firewall/patches/fullconenat.patch
 # fix firewall flock
 patch -p1 < ../PATCHES/001-fix-firewall-flock.patch
-# patch dnsmasq
-wget -P package/network/services/dnsmasq/patches https://github.com/immortalwrt/immortalwrt/raw/master/package/network/services/dnsmasq/patches/910-mini-ttl.patch
-wget -P package/network/services/dnsmasq/patches https://github.com/immortalwrt/immortalwrt/raw/master/package/network/services/dnsmasq/patches/911-dnsmasq-filter-aaaa.patch
 # patch pdnsd-alt
 mkdir -p feeds/packages/net/pdnsd-alt/patches
-cp -f ../PATCHES/003-fix-pdnsd-alt-build-error-within-kernel5.14.patch feeds/packages/net/pdnsd-alt/patches/
+cp -f ../PATCHES/002-fix-pdnsd-alt-build-error-within-kernel5.14.patch feeds/packages/net/pdnsd-alt/patches/
 
 ### 获取额外的Packages ###
 # GCC11
 rm -rf ./toolchain/gcc
-svn co https://github.com/Ansuel/openwrt/branches/gcc-11/toolchain/gcc toolchain/gcc
+svn co https://github.com/openwrt/openwrt/trunk/toolchain/gcc toolchain/gcc
 rm -rf ./package/libs/elfutils
 svn co https://github.com/neheb/openwrt/branches/elf/package/libs/elfutils package/libs/elfutils
-# UPX 可执行软件压缩
-sed -i '/patchelf pkgconf/i\tools-y += ucl upx' ./tools/Makefile
-sed -i '\/autoconf\/compile :=/i\$(curdir)/upx/compile := $(curdir)/ucl/compile' ./tools/Makefile
-svn co https://github.com/immortalwrt/immortalwrt/branches/master/tools/upx tools/upx
-svn co https://github.com/immortalwrt/immortalwrt/branches/master/tools/ucl tools/ucl
-# mbedtls
-rm -rf ./package/libs/mbedtls
-svn co https://github.com/immortalwrt/immortalwrt/branches/master/package/libs/mbedtls package/libs/mbedtls
-# fullconenat
-svn co https://github.com/immortalwrt/immortalwrt/branches/master/package/kernel/fullconenat package/kernel/fullconenat
-# exfat
-svn co https://github.com/immortalwrt/immortalwrt/branches/master/package/kernel/exfat package/kernel/exfat
-# emortal
-svn co https://github.com/immortalwrt/immortalwrt/branches/master/package/emortal package/emortal
 
 ### 获取额外的 LuCI 应用、主题和依赖 ###
 # MOD Argon

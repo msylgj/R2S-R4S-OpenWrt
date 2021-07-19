@@ -58,14 +58,15 @@ jobs:
       - name: Prepare Sources
         run: |
           sudo chown -R runner:runner /home/runner/work/R2S-R4S-OpenWrt
-          git clone -b linux-5.14 --single-branch https://github.com/mj22226/openwrt.git openwrt
+          git clone -b kernel-5.14 --single-branch https://github.com/msylgj/immortalwrt.git openwrt
       - name: Prepare Package
         run: |
           cd openwrt
           cp -r ../SCRIPTS/prepare_package.sh ./prepare_package.sh
-          cp -r ../SCRIPTS/target_r4s.sh ./target_r4s.sh
           /bin/bash prepare_package.sh
-          /bin/bash target_r4s.sh
+          #IRQ 调优
+          sed -i '/set_interface_core 20 "eth1"/a\set_interface_core 8 "ff3c0000" "ff3c0000.i2c"' target/linux/rockchip/armv8/base-files/etc/hotplug.d/net/40-net-smp-affinity
+          sed -i '/set_interface_core 20 "eth1"/a\ethtool -C eth0 rx-usecs 1000 rx-frames 25 tx-usecs 100 tx-frames 25' target/linux/rockchip/armv8/base-files/etc/hotplug.d/net/40-net-smp-affinity
       - name: Convert Translation
         run: |
           cd openwrt
