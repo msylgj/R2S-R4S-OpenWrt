@@ -15,7 +15,6 @@
 
 ## 当前已知问题:
 - SFE不可用
-- pdnsd-alt编译失败,ssrp和turboacc需要用dnsproxy替代(推荐)
 ## 说明
 * openwrt master branch-SNAPSHOT
 * Linux-kernel: 5.14.x
