@@ -20,8 +20,6 @@ cp -f ../PATCHES/002-fix-pdnsd-alt-build-error-within-kernel5.14.patch feeds/pac
 
 ### 获取额外的Packages ###
 # GCC11
-rm -rf ./toolchain/gcc
-svn co https://github.com/openwrt/openwrt/trunk/toolchain/gcc toolchain/gcc
 rm -rf ./package/libs/elfutils
 svn co https://github.com/neheb/openwrt/branches/elf/package/libs/elfutils package/libs/elfutils
 
