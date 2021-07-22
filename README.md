@@ -41,7 +41,7 @@
 - app:frpc(r2s)
 - app:frps(r4s)
 - app:oled(r2s)
-- app:ssrplus
+- app:openclash
 - app:ramfree
 - app:serverchan
 - app:tencentddns
