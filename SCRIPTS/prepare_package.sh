@@ -10,8 +10,7 @@ sed -i 's/Os/O3/g' include/target.mk
 
 ### 必要的 Patches ###
 # Patch jsonc
-wget -q https://github.com/QiuSimons/R2S-R4S-X86-OpenWrt/raw/master/PATCH/jsonc/use_json_object_new_int64.patch
-patch -p1 < ./use_json_object_new_int64.patch
+wget -qO- https://github.com/QiuSimons/R2S-R4S-X86-OpenWrt/raw/master/PATCH/jsonc/use_json_object_new_int64.patch | patch -p1
 # fix firewall flock
 patch -p1 < ../PATCHES/001-fix-firewall-flock.patch
 # patch pdnsd-alt
