@@ -17,11 +17,6 @@ patch -p1 < ../PATCHES/001-fix-firewall-flock.patch
 mkdir -p feeds/packages/net/pdnsd-alt/patches
 cp -f ../PATCHES/002-fix-pdnsd-alt-build-error-within-kernel5.14.patch feeds/packages/net/pdnsd-alt/patches/
 
-### 获取额外的Packages ###
-# GCC11
-rm -rf ./package/libs/elfutils
-svn co https://github.com/neheb/openwrt/branches/elf/package/libs/elfutils package/libs/elfutils
-
 ### 获取额外的 LuCI 应用、主题和依赖 ###
 # MOD Argon
 pushd feeds/luci/themes/luci-theme-argon
