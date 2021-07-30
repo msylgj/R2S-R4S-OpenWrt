@@ -16,6 +16,8 @@ patch -p1 < ../PATCHES/001-fix-firewall-flock.patch
 # patch pdnsd-alt
 mkdir -p feeds/packages/net/pdnsd-alt/patches
 cp -f ../PATCHES/002-fix-pdnsd-alt-build-error-within-kernel5.14.patch feeds/packages/net/pdnsd-alt/patches/
+# patch Grub 2
+wget -qO - https://github.com/QiuSimons/openwrt-NoTengoBattery/commit/71d808b.patch | patch -p1
 
 ### 获取额外的 LuCI 应用、主题和依赖 ###
 # MOD Argon
