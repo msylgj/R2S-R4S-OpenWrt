@@ -16,11 +16,16 @@ patch -p1 < ../PATCHES/001-fix-firewall-flock.patch
 # patch pdnsd-alt
 mkdir -p feeds/packages/net/pdnsd-alt/patches
 cp -f ../PATCHES/002-fix-pdnsd-alt-build-error-within-kernel5.14.patch feeds/packages/net/pdnsd-alt/patches/
+# CacULE
+wget -qO target/linux/generic/hack-5.14/694-cacule-5.14.patch https://github.com/hamadmarri/cacule-cpu-scheduler/raw/master/patches/CacULE/v5.14/cacule-5.14.patch
+patch -p1 < ../PATCHES/003-update-kernel-config-for-CacULE.patch
+# UKSM
+cp -f ../PATCHES/695-add-uksm-support-for-kernel-5.14.patch target/linux/generic/hack-5.14/
 
 ### 获取额外的 LuCI 应用、主题和依赖 ###
 # MOD Argon
 pushd feeds/luci/themes/luci-theme-argon
-wget -qO - https://github.com/msylgj/luci-theme-argon/commit/0197576.patch | patch -p1
+wget -qO- https://github.com/msylgj/luci-theme-argon/commit/0197576.patch | patch -p1
 popd
 # DNSPod
 svn co https://github.com/msylgj/OpenWrt_luci-app/trunk/luci-app-tencentddns feeds/luci/applications/luci-app-tencentddns
