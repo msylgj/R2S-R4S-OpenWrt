@@ -25,7 +25,8 @@
 * username: root
 * password: 空
 * 原汁原味非杂交! 感谢mj大佬以及Immortalwrt/R2S Club/R4S Club/天灵/GC/QC等诸多大佬的努力!
-* 添加Flow Offload+Full Cone Nat
+* 添加Flow Offload+Full Cone Nat+BBRv2
+* 添加CacULE Scheduler和UKSM支持
 * 支持scp和sftp
 * 无usb-wifi支持.wan&lan交换(r2s)
 * 原生OP内置升级可用,固件重置可用

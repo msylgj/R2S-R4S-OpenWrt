@@ -1,0 +1,108 @@
+From 6b84e57885e9a35edd61183ab9540a9d62933ba3 Mon Sep 17 00:00:00 2001
+From: SiYao Mo <msylgj@vip.qq.com>
+Date: Sat, 14 Aug 2021 01:35:54 +0800
+Subject: [PATCH] mod: turboacc: switch bbr support to bbr2
+
+---
+ Makefile                   | 2 +-
+ luasrc/model/cbi/turboacc.lua       | 6 +++---
+ luasrc/view/turboacc/status.htm     | 2 +-
+ po/zh_Hans/turboacc.po     | 8 ++++----
+ root/etc/init.d/turboacc   | 6 +++---
+ 5 files changed, 12 insertions(+), 12 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index 9bc9cc56a..683cc847c 100644
+--- a/Makefile
++++ b/Makefile
+@@ -13,7 +13,7 @@ PKG_MAINTAINER:=Tianling Shen <cnsztl@immortalwrt.org>
+ 
+ LUCI_TITLE:=LuCI support for Flow Offload / Shortcut-FE
+ LUCI_DEPENDS:=+pdnsd-alt \
+-	+PACKAGE_TURBOACC_INCLUDE_BBR_CCA:kmod-tcp-bbr \
++	+PACKAGE_TURBOACC_INCLUDE_BBR_CCA:kmod-tcp-bbr2 \
+ 	+PACKAGE_TURBOACC_INCLUDE_DNSFORWARDER:dnsforwarder \
+ 	+PACKAGE_TURBOACC_INCLUDE_DNSPROXY:dnsproxy \
+ 	+PACKAGE_TURBOACC_INCLUDE_OFFLOADING:kmod-ipt-offload \
+diff --git a/luasrc/model/cbi/turboacc.lua b/luasrc/model/cbi/turboacc.lua
+index 49581d38d..7103acd0a 100644
+--- a/luasrc/model/cbi/turboacc.lua
++++ b/luasrc/model/cbi/turboacc.lua
+@@ -43,10 +43,10 @@ sfe_ipv6.description = translate("Enable IPv6 Acceleration")
+ sfe_ipv6:depends("sfe_flow", 1)
+ end
+ 
+-if nixio.fs.access("/lib/modules/" .. kernel_version .. "/tcp_bbr.ko") then
+-bbr_cca = s:option(Flag, "bbr_cca", translate("BBR CCA"))
++if nixio.fs.access("/lib/modules/" .. kernel_version .. "/tcp_bbr2.ko") then
++bbr_cca = s:option(Flag, "bbr_cca", translate("BBR2 CCA"))
+ bbr_cca.default = 0
+-bbr_cca.description = translate("Using BBR CCA can improve TCP network performance effectively")
++bbr_cca.description = translate("Using BBR2 CCA can improve TCP network performance effectively")
+ end 
+ 
+ if nixio.fs.access("/lib/modules/" .. kernel_version .. "/xt_FULLCONENAT.ko") then
+diff --git a/luasrc/view/turboacc/status.htm b/luasrc/view/turboacc/status.htm
+index 90de3884b..afff78412 100644
+--- a/luasrc/view/turboacc/status.htm
++++ b/luasrc/view/turboacc/status.htm
+@@ -3,7 +3,7 @@
+ 	<table width="100%" cellspacing="10" id="_turboacc_status_table">
+ 		<tr><td width="33%"><%:Flow Offloading%></td><td id="_fastpath_state"><em><%:Collecting data...%></em></td></tr>
+ 		<tr><td width="33%"><%:FullCone NAT%></td><td id="_fullconenat_state"><em><%:Collecting data...%></em></td></tr>
+-		<tr><td width="33%"><%:BBR CCA%></td><td id="_bbr_state"><em><%:Collecting data...%></em></td></tr>
++		<tr><td width="33%"><%:BBR2 CCA%></td><td id="_bbr_state"><em><%:Collecting data...%></em></td></tr>
+ 		<tr><td width="33%"><%:DNS Caching%></td><td id="_dnscaching_state"><em><%:Collecting data...%></em></td></tr>
+ 	</table>
+ </fieldset>
+diff --git a/po/zh_Hans/turboacc.po b/po/zh_Hans/turboacc.po
+index 9111e3fc4..3a288e12a 100644
+--- a/po/zh_Hans/turboacc.po
++++ b/po/zh_Hans/turboacc.po
+@@ -40,11 +40,11 @@ msgstr "IPv6 加速"
+ msgid "Enable IPv6 Acceleration"
+ msgstr "启用 IPv6 加速"
+ 
+-msgid "BBR CCA"
+-msgstr "BBR 拥塞控制算法"
++msgid "BBR2 CCA"
++msgstr "BBR2 拥塞控制算法"
+ 
+-msgid "Using BBR CCA can improve TCP network performance effectively"
+-msgstr "使用 BBR 拥塞控制算法可以有效提升 TCP 网络性能"
++msgid "Using BBR2 CCA can improve TCP network performance effectively"
++msgstr "使用 BBR2 拥塞控制算法可以有效提升 TCP 网络性能"
+ 
+ msgid "FullCone NAT"
+ msgstr "全锥形 NAT"
+diff --git a/root/etc/init.d/turboacc b/root/etc/init.d/turboacc
+index 8b8b31bf1..d851b375b 100755
+--- a/root/etc/init.d/turboacc
++++ b/root/etc/init.d/turboacc
+@@ -24,7 +24,7 @@ inital_conf(){
+ 
+ 	[ ! -e "/lib/modules/$(uname -r)/xt_FLOWOFFLOAD.ko" ] && { sw_flow="0"; hw_flow="0"; }
+ 	[ ! -e "/lib/modules/$(uname -r)/fast-classifier.ko" ] && { sfe_flow="0"; sfe_bridge="0"; sfe_ipv6="0"; }
+-	[ ! -e "/lib/modules/$(uname -r)/tcp_bbr.ko" ] && bbr_cca="0"
++	[ ! -e "/lib/modules/$(uname -r)/tcp_bbr2.ko" ] && bbr_cca="0"
+ 	[ ! -e "/lib/modules/$(uname -r)/xt_FULLCONENAT.ko" ] && fullcone_nat="0"
+ }
+ 
+@@ -242,7 +242,7 @@ start(){
+ 	}
+ 
+ 	if [ "${bbr_cca}" -eq "1" ];  then
+-		sysctl -w net.ipv4.tcp_congestion_control="bbr"
++		sysctl -w net.ipv4.tcp_congestion_control="bbr2"
+ 	else
+ 		sysctl -w net.ipv4.tcp_congestion_control="cubic"
+ 	fi	
+@@ -326,7 +326,7 @@ check_status(){
+ 			exit 0 || exit 1
+ 		;;
+ 	"bbr")
+-		[ "x$(cat "/proc/sys/net/ipv4/tcp_congestion_control" 2>"/dev/null")" = "xbbr" ] && \
++		[ "x$(cat "/proc/sys/net/ipv4/tcp_congestion_control" 2>"/dev/null")" = "xbbr2" ] && \
+ 			exit 0 || exit 1
+ 		;;
+ 	"dns")

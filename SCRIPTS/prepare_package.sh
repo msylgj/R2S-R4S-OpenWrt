@@ -22,6 +22,10 @@ cp -f ../PATCHES/002-fix-pdnsd-alt-build-error-within-kernel5.14.patch feeds/pac
 pushd feeds/luci/themes/luci-theme-argon
 wget -qO- https://github.com/msylgj/luci-theme-argon/commit/0197576.patch | patch -p1
 popd
+# MOD TurboACC To Add BBRv2
+pushd feeds/luci/applications/luci-app-turboacc
+patch -p1 < ../../../../../PATCHES/003-mod-turboacc-switch-bbr-support-to-bbr2.patch
+popd
 # DNSPod
 svn co https://github.com/msylgj/OpenWrt_luci-app/trunk/luci-app-tencentddns feeds/luci/applications/luci-app-tencentddns
 ln -sf ../../../feeds/luci/applications/luci-app-tencentddns ./package/feeds/luci/luci-app-tencentddns
