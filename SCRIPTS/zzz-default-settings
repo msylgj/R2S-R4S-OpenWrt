@@ -17,10 +17,10 @@ uci -q batch <<-EOF
 	set system.@system[0].timezone='CST-8'
 	set system.@system[0].zonename='Asia/Shanghai'
 	delete system.ntp.server
-	add_list system.ntp.server='cn.ntp.org.cn'
-	add_list system.ntp.server='ntp.ntsc.ac.cn'
 	add_list system.ntp.server='time1.cloud.tencent.com'
-	add_list system.ntp.server='time1.aliyun.com'
+	add_list system.ntp.server='ntp1.aliyun.com'
+	add_list system.ntp.server='ntp.ntsc.ac.cn'
+	add_list system.ntp.server='cn.ntp.org.cn'
 EOF
 uci commit system
 
@@ -62,6 +62,15 @@ uci commit system
 
 #清理内存缓存
 #sync; echo 3 > /proc/sys/vm/drop_caches
+
+#system
+ln -sf /sbin/ip /usr/bin/ip
+
+#clean
+rm -f /www/luci-static/resources/view/status/include/50_dsl.js
+rm -f /www/luci-static/resources/view/status/include/70_ddns.js
+rm -f /www/luci-static/resources/view/status/include/80_minidlna.js
+rm -f /www/luci-static/resources/view/status/include/80_upnp.js
 
 #清除 LuCI 残留缓存
 rm -rf /tmp/luci-modulecache
