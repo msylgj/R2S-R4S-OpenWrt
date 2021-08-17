@@ -36,6 +36,7 @@ svn co https://github.com/vernesong/OpenClash/trunk/luci-app-openclash feeds/luc
 svn co https://github.com/QiuSimons/OpenWrt-Add/trunk/addition-trans-zh package/emortal/addition-trans-zh
 cp -f ../SCRIPTS/zzz-default-settings package/emortal/addition-trans-zh/files/zzz-default-settings
 rm -rf package/emortal/addition-trans-zh/status
+sed -i '/status/d' package/emortal/addition-trans-zh/Makefile
 
 ### 最后的收尾工作 ###
 # Lets Fuck
