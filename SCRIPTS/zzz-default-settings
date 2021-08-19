@@ -25,8 +25,10 @@ EOF
 uci commit system
 
 #Feeds 更换镜像源
-sed -i 's/immortalwrt_core/d' /etc/opkg/distfeeds.conf
+sed -i '/immortalwrt_core/d' /etc/opkg/distfeeds.conf
 sed -i 's/downloads.openwrt.org/downloads.immortalwrt.cnsztl.eu.org/g' /etc/opkg/distfeeds.conf
+#Add PubKey
+wget -qO /etc/opkg/keys/8ead5420c4005b0d https://downloads.immortalwrt.cnsztl.eu.org/snapshots/key-build.pub
 
 #使用bash替代ash
 [ -f '/bin/bash' ] && sed -i 's|root:x:0:0:root:/root:/bin/ash|root:x:0:0:root:/root:/bin/bash|g' /etc/passwd
