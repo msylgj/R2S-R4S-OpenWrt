@@ -69,7 +69,7 @@ jobs:
       - name: Convert Translation
         run: |
           cd openwrt
-          wget -q https://github.com/QiuSimons/R2S-R4S-X86-OpenWrt/raw/master/SCRIPTS/03_convert_translation.sh
+          wget -q https://github.com/QiuSimons/YAOF/raw/master/SCRIPTS/03_convert_translation.sh
           /bin/bash 03_convert_translation.sh
       - name: Make Config
         run: |
