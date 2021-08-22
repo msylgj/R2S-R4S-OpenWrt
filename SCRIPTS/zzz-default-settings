@@ -72,7 +72,6 @@ ln -sf /sbin/ip /usr/bin/ip
 rm -f /www/luci-static/resources/view/status/include/50_dsl.js
 rm -f /www/luci-static/resources/view/status/include/70_ddns.js
 rm -f /www/luci-static/resources/view/status/include/80_minidlna.js
-rm -f /www/luci-static/resources/view/status/include/80_upnp.js
 
 #清除 LuCI 残留缓存
 rm -rf /tmp/luci-modulecache
