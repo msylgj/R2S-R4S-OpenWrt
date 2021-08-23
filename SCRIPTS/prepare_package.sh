@@ -32,6 +32,9 @@ ln -sf ../../../feeds/luci/applications/luci-app-tencentddns ./package/feeds/luc
 # OpenClash
 rm -rf feeds/luci/applications/luci-app-openclash
 svn co https://github.com/vernesong/OpenClash/trunk/luci-app-openclash feeds/luci/applications/luci-app-openclash
+# 网易云音乐
+rm -rf feeds/luci/applications/luci-app-unblockneteasemusic
+git clone -b master --single-branch https://github.com/immortalwrt/luci-app-unblockneteasemusic.git feeds/luci/applications/luci-app-unblockneteasemusic
 # 翻译及部分功能优化
 svn co https://github.com/QiuSimons/OpenWrt-Add/trunk/addition-trans-zh package/emortal/addition-trans-zh
 cp -f ../SCRIPTS/zzz-default-settings package/emortal/addition-trans-zh/files/zzz-default-settings
