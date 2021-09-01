@@ -36,7 +36,6 @@
 ## 插件清单
 - app:arpbind
 - app:autoreboot
-- app:beardropper
 - app:cpufreq
 - app:frpc(r2s)
 - app:frps(r4s)

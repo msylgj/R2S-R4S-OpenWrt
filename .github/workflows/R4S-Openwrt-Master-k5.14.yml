@@ -58,7 +58,7 @@ jobs:
       - name: Prepare Sources
         run: |
           sudo chown -R runner:runner /home/runner/work/R2S-R4S-OpenWrt
-          git clone -b kernel-5.14 --single-branch https://github.com/msylgj/immortalwrt.git openwrt
+          git clone -b kernel-5.14 --depth 1 https://github.com/msylgj/immortalwrt.git openwrt
       - name: Prepare Package
         run: |
           cd openwrt
