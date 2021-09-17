@@ -20,7 +20,7 @@ cp -f ../PATCHES/002-fix-pdnsd-alt-build-error-within-kernel5.14.patch feeds/pac
 ### 获取额外的 LuCI 应用、主题和依赖 ###
 # MOD Argon
 pushd feeds/luci/themes/luci-theme-argon
-wget -qO- https://github.com/msylgj/luci-theme-argon/commit/0197576.patch | patch -p1
+wget -qO- https://github.com/msylgj/luci-theme-argon/commit/d2425a5.patch | patch -p1
 popd
 # MOD TurboACC To Add BBRv2
 pushd feeds/luci/applications/luci-app-turboacc
