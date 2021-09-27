@@ -48,9 +48,6 @@ uci set upnpd.config.igdv1='1'
 uci set upnpd.config.enabled='1'
 uci commit upnpd
 
-#OpenClash 设置
-echo "/etc/openclash/" >> /etc/sysupgrade.conf && cat /etc/sysupgrade.conf | sort | uniq > /tmp/tmp_sysupgrade_conf && cat /tmp/tmp_sysupgrade_conf > /etc/sysupgrade.conf
-
 #dnsmasq 设置
 uci set dhcp.@dnsmasq[0].rebind_protection='0'
 uci commit dhcp
@@ -72,6 +69,8 @@ ln -sf /sbin/ip /usr/bin/ip
 rm -f /www/luci-static/resources/view/status/include/50_dsl.js
 rm -f /www/luci-static/resources/view/status/include/70_ddns.js
 rm -f /www/luci-static/resources/view/status/include/80_minidlna.js
+#OpenClash
+rm -f /etc/openclash/core/*
 
 #清除 LuCI 残留缓存
 rm -rf /tmp/luci-modulecache
