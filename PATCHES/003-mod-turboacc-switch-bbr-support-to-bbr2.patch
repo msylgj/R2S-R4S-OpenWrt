@@ -88,7 +88,7 @@ index 8b8b31bf1..d851b375b 100755
  	[ ! -e "/lib/modules/$(uname -r)/xt_FULLCONENAT.ko" ] && fullcone_nat="0"
  }
  
-@@ -242,7 +242,7 @@ start(){
+@@ -247,7 +247,7 @@ start(){
  	}
  
  	if [ "${bbr_cca}" -eq "1" ];  then
@@ -97,7 +97,7 @@ index 8b8b31bf1..d851b375b 100755
  	else
  		sysctl -w net.ipv4.tcp_congestion_control="cubic"
  	fi	
-@@ -326,7 +326,7 @@ check_status(){
+@@ -337,7 +337,7 @@ check_status(){
  			exit 0 || exit 1
  		;;
  	"bbr")
