@@ -71,6 +71,11 @@ jobs:
           cd openwrt
           wget -q https://github.com/QiuSimons/YAOF/raw/master/SCRIPTS/03_convert_translation.sh
           /bin/bash 03_convert_translation.sh
+      - name: Remove upx
+        run: |
+          cd openwrt
+          wget -q https://github.com/QiuSimons/YAOF/raw/master/SCRIPTS/04_remove_upx.sh
+          /bin/bash 04_remove_upx.sh
       - name: Make Config
         run: |
           cd openwrt
