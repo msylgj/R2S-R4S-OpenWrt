@@ -15,7 +15,10 @@ wget -qO- https://github.com/QiuSimons/YAOF/raw/master/PATCH/jsonc/use_json_obje
 patch -p1 < ../PATCHES/001-fix-firewall-flock.patch
 # patch pdnsd-alt
 mkdir -p feeds/packages/net/pdnsd-alt/patches
-cp -f ../PATCHES/002-fix-pdnsd-alt-build-error-within-kernel5.14.patch feeds/packages/net/pdnsd-alt/patches/
+cp -f ../PATCHES/002-fix-pdnsd-alt-build-error-over-kernel5.13.patch feeds/packages/net/pdnsd-alt/patches/
+# fullconenat
+rm -rf package/kernel/fullconenat
+svn co https://github.com/WYC-2020/lede/trunk/package/lean/openwrt-fullconenat ./package/kernel/fullconenat
 
 ### 获取额外的 LuCI 应用、主题和依赖 ###
 # MOD Argon

@@ -25,8 +25,7 @@ EOF
 uci commit system
 
 #Feeds 更换镜像源
-sed -i '/immortalwrt_core/d' /etc/opkg/distfeeds.conf
-sed -i 's/downloads.openwrt.org/downloads.immortalwrt.cnsztl.eu.org/g' /etc/opkg/distfeeds.conf
+sed -i 's,downloads.openwrt.org,mirrors.vsean.net/openwrt,g' /etc/opkg/distfeeds.conf
 #Add PubKey
 mv /etc/key-build.pub /etc/opkg/keys/8ead5420c4005b0d
 
@@ -36,6 +35,10 @@ mv /etc/key-build.pub /etc/opkg/keys/8ead5420c4005b0d
 #uhttpd 设置
 uci set uhttpd.main.rfc1918_filter=0
 uci set uhttpd.main.redirect_https=0
+uci set uhttpd.main.http_keepalive=0
+uci set uhttpd.main.tcp_keepalive=0
+uci set uhttpd.main.script_timeout=65535
+uci set uhttpd.main.script_network_timeout=65535
 uci commit uhttpd
 /etc/init.d/uhttpd restart
 
@@ -46,6 +49,11 @@ uci commit network
 #通用即插即用
 uci set upnpd.config.igdv1='1'
 uci set upnpd.config.enabled='1'
+uci del upnpd.config.enable_upnp
+uci del upnpd.config.enable_natpmp
+uci set upnpd.config.external_iface='wan'
+uci set upnpd.config.use_stun='1'
+uci set upnpd.config.stun_host='stun.miwifi.com'
 uci commit upnpd
 
 #dnsmasq 设置
