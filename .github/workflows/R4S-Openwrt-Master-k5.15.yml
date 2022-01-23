@@ -140,7 +140,7 @@ jobs:
           path: ./artifact/
       - name: Create release
         id: create_release
-        uses: ncipollo/release-action@v1.8.0
+        uses: ncipollo/release-action@v1.9.0
         with:
           name: ${{ steps.assemble_artifact.outputs.release_tag }}-ROM
           allowUpdates: true
