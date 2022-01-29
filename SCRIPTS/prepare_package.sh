@@ -34,7 +34,7 @@ svn co https://github.com/msylgj/OpenWrt_luci-app/trunk/luci-app-tencentddns fee
 ln -sf ../../../feeds/luci/applications/luci-app-tencentddns ./package/feeds/luci/luci-app-tencentddns
 # OpenClash
 rm -rf feeds/luci/applications/luci-app-openclash
-svn co https://github.com/vernesong/OpenClash/trunk/luci-app-openclash feeds/luci/applications/luci-app-openclash
+svn co https://github.com/vernesong/OpenClash/branches/dev/luci-app-openclash feeds/luci/applications/luci-app-openclash
 # ServerChan
 rm -rf feeds/luci/applications/luci-app-serverchan
 git clone -b master --depth 1 https://github.com/tty228/luci-app-serverchan.git feeds/luci/applications/luci-app-serverchan
