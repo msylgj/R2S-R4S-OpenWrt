@@ -50,8 +50,6 @@ cp -f ../SCRIPTS/zzz-default-settings package/emortal/addition-trans-zh/files/zz
 mkdir package/base-files/files/usr/bin
 cp -f ../SCRIPTS/fuck package/base-files/files/usr/bin/fuck
 chmod +x ./package/base-files/files/usr/bin/fuck
-# Prepare PubKey
-wget -qNP package/base-files/files/etc https://downloads.immortalwrt.cnsztl.eu.org/snapshots/key-build.pub
 # 定制化配置
 sed -i "s/'%D %V %C'/'Built by OPoA($(date +%Y.%m.%d))@%D %V'/g" package/base-files/files/etc/openwrt_release
 sed -i "/DISTRIB_REVISION/d" package/base-files/files/etc/openwrt_release

@@ -24,11 +24,6 @@ uci -q batch <<-EOF
 EOF
 uci commit system
 
-#Feeds 更换镜像源
-sed -i 's,downloads.openwrt.org,mirrors.vsean.net/openwrt,g' /etc/opkg/distfeeds.conf
-#Add PubKey
-mv /etc/key-build.pub /etc/opkg/keys/8ead5420c4005b0d
-
 #使用bash替代ash
 [ -f '/bin/bash' ] && sed -i 's|root:x:0:0:root:/root:/bin/ash|root:x:0:0:root:/root:/bin/bash|g' /etc/passwd
 
@@ -62,6 +57,9 @@ uci commit dhcp
 sed -i '/log-facility/d' /etc/dnsmasq.conf
 echo "log-facility=/dev/null" >> /etc/dnsmasq.conf
 
+#OpenClash 设置
+echo "/etc/openclash/" >> /etc/sysupgrade.conf && cat /etc/sysupgrade.conf | sort | uniq > /tmp/tmp_sysupgrade_conf && cat /tmp/tmp_sysupgrade_conf > /etc/sysupgrade.conf
+
 #计划任务
 uci set system.@system[0].cronloglevel="9"
 uci commit system
@@ -77,8 +75,6 @@ ln -sf /sbin/ip /usr/bin/ip
 rm -f /www/luci-static/resources/view/status/include/50_dsl.js
 rm -f /www/luci-static/resources/view/status/include/70_ddns.js
 rm -f /www/luci-static/resources/view/status/include/80_minidlna.js
-#OpenClash
-rm -f /etc/openclash/core/*
 
 #清除 LuCI 残留缓存
 rm -rf /tmp/luci-modulecache
