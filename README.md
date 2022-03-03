@@ -42,6 +42,7 @@
 - app:openclash
 - app:ramfree
 - app:serverchan
+- subconverter
 - app:tencentddns
 - app:turboacc
 - app:unblockneteasemusic
