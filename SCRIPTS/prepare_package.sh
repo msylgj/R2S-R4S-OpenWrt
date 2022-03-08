@@ -16,12 +16,6 @@ patch -p1 < ../PATCHES/001-fix-firewall-flock.patch
 # patch pdnsd-alt
 mkdir -p feeds/packages/net/pdnsd-alt/patches
 cp -f ../PATCHES/002-fix-pdnsd-alt-build-error-over-kernel5.13.patch feeds/packages/net/pdnsd-alt/patches/
-# fullconenat
-rm -rf package/kernel/fullconenat
-svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/openwrt-fullconenat ./package/kernel/fullconenat
-pushd package/kernel/fullconenat
-wget -qO- https://github.com/QiuSimons/YAOF/raw/master/PATCH/firewall/fullcone6.patch | patch -p2
-popd
 
 ### 获取额外的 LuCI 应用、主题和依赖 ###
 # MOD Argon
