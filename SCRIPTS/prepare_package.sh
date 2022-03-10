@@ -11,8 +11,6 @@ sed -i 's/Os/O3 -funsafe-math-optimizations -funroll-loops -ffunction-sections -
 ### 必要的 Patches ###
 # Patch jsonc
 wget -qO- https://github.com/QiuSimons/YAOF/raw/master/PATCH/jsonc/use_json_object_new_int64.patch | patch -p1
-# fix firewall flock
-patch -p1 < ../PATCHES/001-fix-firewall-flock.patch
 # patch pdnsd-alt
 mkdir -p feeds/packages/net/pdnsd-alt/patches
 cp -f ../PATCHES/002-fix-pdnsd-alt-build-error-over-kernel5.13.patch feeds/packages/net/pdnsd-alt/patches/
@@ -24,7 +22,7 @@ wget -qO- https://github.com/msylgj/luci-theme-argon/commit/7c191be.patch | patc
 popd
 # MOD TurboACC To Add BBRv2
 pushd feeds/luci/applications/luci-app-turboacc
-patch -p1 < ../../../../../PATCHES/003-mod-turboacc-switch-bbr-support-to-bbr2.patch
+patch -p1 < ../../../../../PATCHES/001-mod-turboacc-switch-bbr-support-to-bbr2.patch
 popd
 # DNSPod
 svn co https://github.com/msylgj/OpenWrt_luci-app/trunk/luci-app-tencentddns feeds/luci/applications/luci-app-tencentddns
@@ -39,8 +37,7 @@ git clone -b master --depth 1 https://github.com/tty228/luci-app-serverchan.git 
 rm -rf feeds/luci/applications/luci-app-unblockneteasemusic
 git clone -b master --depth 1 https://github.com/UnblockNeteaseMusic/luci-app-unblockneteasemusic.git feeds/luci/applications/luci-app-unblockneteasemusic
 # 翻译及部分功能优化
-svn co https://github.com/QiuSimons/OpenWrt-Add/trunk/addition-trans-zh package/emortal/addition-trans-zh
-cp -f ../SCRIPTS/zzz-default-settings package/emortal/addition-trans-zh/files/zzz-default-settings
+svn co https://github.com/msylgj/OpenWrt-Add/trunk/addition-trans-zh package/emortal/addition-trans-zh
 
 ### 最后的收尾工作 ###
 # Lets Fuck
