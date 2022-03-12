@@ -14,6 +14,10 @@ wget -qO- https://github.com/QiuSimons/YAOF/raw/master/PATCH/jsonc/use_json_obje
 # patch pdnsd-alt
 mkdir -p feeds/packages/net/pdnsd-alt/patches
 cp -f ../PATCHES/002-fix-pdnsd-alt-build-error-over-kernel5.13.patch feeds/packages/net/pdnsd-alt/patches/
+# Patch netfilter.mk: package libip6t_icmp6.so into ip6tables-extra
+wget -qO- https://github.com/openwrt/openwrt/pull/9443.patch | patch -p1
+# Patch ipset: add backport patch for IPv6 nftables ipset-translation
+wget -qO- https://github.com/openwrt/openwrt/pull/9444.patch | patch -p1
 
 ### 获取额外的 LuCI 应用、主题和依赖 ###
 # MOD Argon
