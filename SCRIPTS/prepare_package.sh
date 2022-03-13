@@ -50,4 +50,8 @@ sed -i 's/2016/2208/g' feeds/luci/applications/luci-app-cpufreq/root/etc/uci-def
 # 生成默认配置及缓存
 rm -rf .config
 
+# 清理可能因patch存在的冲突文件
+find ./ -name *.orig | xargs rm -rf
+find ./ -name *.rej | xargs rm -rf
+
 exit 0
