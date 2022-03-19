@@ -11,6 +11,9 @@ sed -i 's/Os/O3 -funsafe-math-optimizations -funroll-loops -ffunction-sections -
 ### 必要的 Patches ###
 # Patch jsonc
 wget -qO- https://github.com/QiuSimons/YAOF/raw/master/PATCH/jsonc/use_json_object_new_int64.patch | patch -p1
+# miniupnpd-nftables
+rm -rf feeds/packages/net/miniupnpd
+git clone -b main --depth 1 https://github.com/msylgj/miniupnpd.git feeds/packages/net/miniupnpd
 
 ### 获取额外的 LuCI 应用、主题和依赖 ###
 # MOD Argon
