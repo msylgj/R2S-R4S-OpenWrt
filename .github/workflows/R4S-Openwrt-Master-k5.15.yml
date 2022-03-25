@@ -66,6 +66,11 @@ jobs:
           /bin/bash prepare_package.sh
           cp -r ../SCRIPTS/target_r4s.sh ./target_r4s.sh
           /bin/bash target_r4s.sh
+      - name: Convert Translation
+        run: |
+          cd openwrt
+          wget -q https://github.com/QiuSimons/YAOF/raw/master/SCRIPTS/03_convert_translation.sh
+          /bin/bash 03_convert_translation.sh
       - name: Make Config
         run: |
           cd openwrt
