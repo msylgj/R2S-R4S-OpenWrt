@@ -1,7 +1,7 @@
 diff -Naur a/luasrc/model/cbi/turboacc.lua b/luasrc/model/cbi/turboacc.lua
 --- a/luasrc/model/cbi/turboacc.lua	2022-03-12 17:46:47.068413861 +0000
 +++ b/luasrc/model/cbi/turboacc.lua	2022-03-12 17:47:13.100144807 +0000
-@@ -37,10 +37,10 @@
+@@ -43,10 +43,10 @@
  sfe_ipv6:depends("sfe_flow", 1)
  end
  
