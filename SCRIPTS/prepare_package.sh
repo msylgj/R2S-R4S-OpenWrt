@@ -14,9 +14,8 @@ wget -qO- https://github.com/QiuSimons/YAOF/raw/master/PATCH/jsonc/use_json_obje
 
 ### 获取额外的 LuCI 应用、主题和依赖 ###
 # MOD Argon
-pushd feeds/luci/themes/luci-theme-argon
-wget -qO- https://github.com/msylgj/luci-theme-argon/commit/9fe84a8.patch | patch -p1
-popd
+rm -rf feeds/luci/themes/luci-theme-argon
+git clone -b randomPic --depth 1 https://github.com/msylgj/luci-theme-argon.git feeds/luci/themes/luci-theme-argon
 # MOD TurboACC To Add BBRv2
 pushd feeds/luci/applications/luci-app-turboacc
 patch -p1 < ../../../../../PATCHES/001-mod-turboacc-switch-bbr-support-to-bbr2.patch
