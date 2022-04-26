@@ -1,4 +1,4 @@
-<h1 align="center">NanoPi-R2S/R4S-OpenWrt Master With Kernel-5.15</h1>
+<h1 align="center">NanoPi-R2S/R4S-OpenWrt</h1>
 <p align="center">
 <img src="https://forthebadge.com/images/badges/built-with-love.svg">
 <p>
@@ -7,8 +7,8 @@
 <img alt="GitHub" src="https://img.shields.io/github/license/msylgj/R2S-R4S-OpenWrt?style=for-the-badge">
 <p>
 <p align="center">
-<img src="https://github.com/msylgj/R2S-R4S-OpenWrt/actions/workflows/R2S-Openwrt-Master-k5.15.yml/badge.svg">
-<img src="https://github.com/msylgj/R2S-R4S-OpenWrt/actions/workflows/R4S-Openwrt-Master-k5.15.yml/badge.svg">
+<img src="https://github.com/msylgj/R2S-R4S-OpenWrt/actions/workflows/Openwrt-Master-k5.15.yml/badge.svg">
+<img src="https://github.com/msylgj/R2S-R4S-OpenWrt/actions/workflows/Openwrt-21.02-k5.4.yml/badge.svg">
 <p>
 
 <h1 align="center">请勿用于商业用途!!!</h1>
@@ -16,18 +16,17 @@
 ## 当前已知问题:
 - 无
 ## 说明
-* openwrt master branch-SNAPSHOT
-* Linux-kernel: 5.15.x
-* Fork自mj大佬linux-5.15分支(非常感谢大佬迁移内核适配),整合immortalwrt项目部分patch和luci/packages,个人根据**完全私人**口味进行了一定修改,建议去源库了解更多
-    - [mj22226](https://github.com/mj22226/openwrt)
+* ImmortalWrt master branch-SNAPSHOT / ImmortalWrt 21.02 Release
+* Linux-kernel: 5.15.x / 5.4.x
+* Fork自ImmortalWrt,个人根据**完全私人**口味进行了一定修改,建议去源库了解更多
     - [immortalwrt](https://github.com/immortalwrt/immortalwrt)
 * ipv4: 192.168.2.1
 * username: root
-* password: 空
-* 原汁原味非杂交! 感谢mj大佬以及Immortalwrt/R2S Club/R4S Club/天灵/GC/QC等诸多大佬的努力!
+* password: 空 / password
+* 原汁原味非杂交! 感谢Immortalwrt/R2S Club/R4S Club/天灵/GC/QC等诸多大佬的努力!
 * 添加Flow Offload+Full Cone Nat+BBRv2
 * 支持scp和sftp
-* 无usb-wifi支持.wan&lan交换(r2s)
+* 无usb-wifi支持
 * 原生OP内置升级可用,固件重置可用
 * 支持SSD1306驱动的12864(0.96英寸)和12832(0.91英寸)OLED屏幕(r2s)
 * OC-1.6(r2s)/2.2-1.8(r4s)
@@ -42,7 +41,6 @@
 - app:openclash
 - app:ramfree
 - app:serverchan
-- app:subconverter
 - app:tencentddns
 - app:turboacc
 - app:unblockneteasemusic

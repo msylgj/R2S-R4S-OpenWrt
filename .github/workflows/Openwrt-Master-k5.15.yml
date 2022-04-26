@@ -1,13 +1,13 @@
-name: R4S Openwrt Master With Kernel-5.15
+name: Openwrt Master With Kernel-5.15
 
 on:
-  push:
-      branches:
-        - master
-      paths:
-        - 'SWITCH'
+  # push:
+  #     branches:
+  #       - master
+  #     paths:
+  #       - 'SWITCH'
   schedule:
-    - cron: '00 03 * * 0'
+    - cron: '00 00 * * 0'
   watch:
     types: [started]
 
@@ -64,30 +64,12 @@ jobs:
           cd openwrt
           cp -r ../SCRIPTS/prepare_package.sh ./prepare_package.sh
           /bin/bash prepare_package.sh
-          cp -r ../SCRIPTS/target_r4s.sh ./target_r4s.sh
-          /bin/bash target_r4s.sh
-      - name: Convert Translation
-        run: |
-          cd openwrt
-          wget -q https://github.com/QiuSimons/YAOF/raw/master/SCRIPTS/03_convert_translation.sh
-          /bin/bash 03_convert_translation.sh
       - name: Make Config
         run: |
           cd openwrt
-          mv ../SEED/config_r4s.seed .config
-          #echo -e 'CONFIG_DEVEL=y\nCONFIG_CCACHE=y' >> .config
+          mv ../SEED/config-master.seed .config
+          sed -i '/CONFIG_TARGET_ROOTFS_SQUASHFS/d' .config
           make defconfig
-      - name: Get Architecture
-        working-directory: ${{ github.workspace }}/openwrt
-        run: |
-          TARGET_DEVICE_ARCH="$(grep "^CONFIG_TARGET_.*_.*=y$" ".config" | head -n 1 | sed 's/^CONFIG_TARGET_//g' | awk -F '_' '{print $1}')"
-          echo "TARGET_DEVICE_ARCH=${TARGET_DEVICE_ARCH}-" >>$GITHUB_ENV
-      - name: Cache
-        uses: klever1988/cachewrtbuild@test
-        with:
-          ccache: 'true'
-          mixkey: ${{ env.TARGET_DEVICE_ARCH }}
-          prefix: ${{ github.workspace }}/openwrt
       - name: Make Download
         run: |
           df -h
@@ -118,20 +100,23 @@ jobs:
           cd ./artifact/
           gzip -d *.gz && exit 0
           gzip *.img
-          sha256sum *.gz | tee R4S-OPoA-Master-k5.15-$(date +%Y-%m-%d).sha256sum
-          mv *ext4* ./R4S-OPoA-Master-k5.15-$(date +%Y-%m-%d)-ext4.img.gz
-          mv *squashfs* ./R4S-OPoA-Master-k5.15-$(date +%Y-%m-%d)-sfs.img.gz
+          sha256sum *r2s*ext4*.gz | tee R2S-OPoA-Master-k5.15-$(date +%Y-%m-%d)-ext4.sha256sum
+          sha256sum *r4s*ext4*.gz | tee R4S-OPoA-Master-k5.15-$(date +%Y-%m-%d)-ext4.sha256sum
+          sha256sum *r2s*squashfs*.gz | tee R2S-OPoA-Master-k5.15-$(date +%Y-%m-%d)-sfs.sha256sum
+          sha256sum *r4s*squashfs*.gz | tee R4S-OPoA-Master-k5.15-$(date +%Y-%m-%d)-sfs.sha256sum
+          mv *r2s*ext4* ./R2S-OPoA-Master-k5.15-$(date +%Y-%m-%d)-ext4.img.gz
+          mv *r4s*ext4* ./R4S-OPoA-Master-k5.15-$(date +%Y-%m-%d)-ext4.img.gz
+          mv *r2s*squashfs* ./R2S-OPoA-Master-k5.15-$(date +%Y-%m-%d)-sfs.img.gz
+          mv *r4s*squashfs* ./R4S-OPoA-Master-k5.15-$(date +%Y-%m-%d)-sfs.img.gz
           cd ../openwrt
-          cp .config ../artifact/R4S-config-full.seed
-          ./scripts/diffconfig.sh > ../artifact/R4S-config-diff.seed
-          artifact_tag="R4S-OPoA-Master-k5.15-$(date +%Y-%m-%d)"
+          cp .config ../artifact/config-full.seed
+          ./scripts/diffconfig.sh > ../artifact/config-diff.seed
           release_tag="R2S-R4S-OPoA-Master-k5.15-$(date +%Y-%m-%d)"
-          echo "##[set-output name=artifact_tag;]$artifact_tag"
           echo "##[set-output name=release_tag;]$release_tag"
       - name: Upload Artifact
         uses: actions/upload-artifact@main
         with:
-          name: ${{ steps.assemble_artifact.outputs.artifact_tag }}-artifact
+          name: ${{ steps.assemble_artifact.outputs.release_tag }}-artifact
           path: ./artifact/
       - name: Create release
         id: create_release
@@ -146,4 +131,3 @@ jobs:
           prerelease: true
           token: ${{ secrets.workflow_token }}
           artifacts: ./artifact/*.gz,./artifact/*.seed,./artiface/*.sha256sum
-
