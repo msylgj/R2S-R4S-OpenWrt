@@ -111,10 +111,7 @@ jobs:
           gzip -d *.gz && exit 0
           gzip *.img
           releaseTag=${{ steps.prepare.outputs.latest_release }}
-          sha256sum *r2s*ext4*.gz | tee R2S-OPoA-$releaseTag-$(date +%Y-%m-%d)-ext4.sha256sum
-          sha256sum *r4s*ext4*.gz | tee R4S-OPoA-$releaseTag-$(date +%Y-%m-%d)-ext4.sha256sum
-          sha256sum *r2s*squashfs*.gz | tee R2S-OPoA-$releaseTag-$(date +%Y-%m-%d)-sfs.sha256sum
-          sha256sum *r4s*squashfs*.gz | tee R4S-OPoA-$releaseTag-$(date +%Y-%m-%d)-sfs.sha256sum
+          sha256sum *.gz | tee R2S-R4S-OPoA-$releaseTag-$(date +%Y-%m-%d).sha256sum
           mv *r2s*ext4* ./R2S-OPoA-$releaseTag-$(date +%Y-%m-%d)-ext4.img.gz
           mv *r4s*ext4* ./R4S-OPoA-$releaseTag-$(date +%Y-%m-%d)-ext4.img.gz
           mv *r2s*squashfs* ./R2S-OPoA-$releaseTag-$(date +%Y-%m-%d)-sfs.img.gz
