@@ -65,15 +65,13 @@ jobs:
       - name: Prepare Package
         run: |
           cd openwrt
-          rm -f ../PATCHES/002-mod-turboacc-switch-bbr-support-to-bbr2.patch
-          mv ../PATCHES/100-mod-turboacc-switch-bbr-support-to-bbr2.patch ../PATCHES/002-mod-turboacc-switch-bbr-support-to-bbr2.patch
+          #rm -f ../PATCHES/002-mod-turboacc-switch-bbr-support-to-bbr2.patch
+          #mv ../PATCHES/100-mod-turboacc-switch-bbr-support-to-bbr2.patch ../PATCHES/002-mod-turboacc-switch-bbr-support-to-bbr2.patch
           cp -f ../SCRIPTS/prepare_package.sh ./prepare_package.sh
           /bin/bash prepare_package.sh
-          # fix firewall3 flock
-          patch -p1 < ../PATCHES/001-fix-firewall-flock.patch
           # BBRv2
-          wget -qO- https://github.com/QiuSimons/YAOF/raw/21.02_EOL/PATCH/BBRv2/openwrt-kmod-bbr2.patch | patch -p1
-          wget -P target/linux/generic/hack-5.4 https://github.com/QiuSimons/YAOF/raw/21.02_EOL/PATCH/BBRv2/693-Add_BBRv2_congestion_control_for_Linux_TCP.patch
+          #wget -qO- https://github.com/QiuSimons/YAOF/raw/21.02_EOL/PATCH/BBRv2/openwrt-kmod-bbr2.patch | patch -p1
+          #wget -P target/linux/generic/hack-5.4 https://github.com/QiuSimons/YAOF/raw/21.02_EOL/PATCH/BBRv2/693-Add_BBRv2_congestion_control_for_Linux_TCP.patch
       - name: Make Config
         run: |
           cd openwrt

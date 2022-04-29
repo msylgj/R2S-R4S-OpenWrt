@@ -8,14 +8,14 @@ sed -i 's/Os/O3 -funsafe-math-optimizations -funroll-loops -ffunction-sections -
 ./scripts/feeds update -a
 ./scripts/feeds install -a
 
+### 必要的 Patches ###
+# fix firewall3 flock
+patch -p1 < ../PATCHES/001-fix-firewall3-flock.patch
+
 ### 获取额外的 LuCI 应用、主题 ###
 # MOD Argon
 rm -rf feeds/luci/themes/luci-theme-argon
 git clone -b randomPic --depth 1 https://github.com/msylgj/luci-theme-argon.git feeds/luci/themes/luci-theme-argon
-# MOD TurboACC To Add BBRv2
-pushd feeds/luci/applications/luci-app-turboacc
-patch -p1 < ../../../../../PATCHES/002-mod-turboacc-switch-bbr-support-to-bbr2.patch
-popd
 # DNSPod
 svn co https://github.com/msylgj/OpenWrt_luci-app/trunk/luci-app-tencentddns feeds/luci/applications/luci-app-tencentddns
 ln -sf ../../../feeds/luci/applications/luci-app-tencentddns ./package/feeds/luci/luci-app-tencentddns
