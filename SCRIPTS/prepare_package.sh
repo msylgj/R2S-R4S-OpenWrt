@@ -15,6 +15,8 @@ patch -p1 < ../PATCHES/001-fix-firewall3-flock.patch
 #wget -qO ./target/linux/generic/hack-5.15/693-Add_BBRv2_congestion_control_for_Linux_TCP.patch https://gitlab.com/sirlucjan/kernel-patches/-/raw/master/5.15/bbr2-patches/0001-bbr2-5.15-introduce-BBRv2.patch 
 
 ### 获取额外的 LuCI 应用、主题 ###
+rm -rf feeds/packages/net/miniupnpd
+git clone -b main --depth 1 https://github.com/msylgj/miniupnpd.git feeds/packages/net/miniupnpd
 # MOD Argon
 rm -rf feeds/luci/themes/luci-theme-argon
 git clone -b randomPic --depth 1 https://github.com/msylgj/luci-theme-argon.git feeds/luci/themes/luci-theme-argon
