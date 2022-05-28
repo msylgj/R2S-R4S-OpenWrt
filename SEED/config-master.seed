@@ -19,7 +19,6 @@ CONFIG_NODEJS_ICU_NONE=y
 CONFIG_PACKAGE_autocore-arm=y
 CONFIG_PACKAGE_coremark=y
 CONFIG_PACKAGE_default-settings-chn=y
-CONFIG_PACKAGE_dnsmasq_full_ipset=y
 CONFIG_PACKAGE_ethtool=y
 CONFIG_PACKAGE_htop=y
 CONFIG_HTOP_LMSENSORS=y
