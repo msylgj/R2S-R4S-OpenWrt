@@ -25,7 +25,7 @@ git clone -b randomPic --depth 1 https://github.com/msylgj/luci-theme-argon.git 
 # patch -p1 < ../../../../../PATCHES/002-mod-turboacc-switch-bbr-support-to-bbr2.patch
 # popd
 # DNSPod
-svn co https://github.com/msylgj/OpenWrt_luci-app/trunk/luci-app-tencentddns feeds/luci/applications/luci-app-tencentddns
+git clone -b main --depth 1 https://github.com/msylgj/luci-app-tencentddns.git feeds/luci/applications/luci-app-tencentddns
 ln -sf ../../../feeds/luci/applications/luci-app-tencentddns ./package/feeds/luci/luci-app-tencentddns
 # OpenClash
 rm -rf feeds/luci/applications/luci-app-openclash
