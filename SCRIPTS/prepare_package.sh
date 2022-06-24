@@ -16,8 +16,11 @@ patch -p1 < ../PATCHES/001-fix-firewall3-flock.patch
 #wget -qO - https://github.com/openwrt/openwrt/commit/7db9763.patch | patch -p1
 
 ### 获取额外的 LuCI 应用、主题 ###
+# Miniupnpd
 rm -rf feeds/packages/net/miniupnpd
 git clone -b main --depth 1 https://github.com/msylgj/miniupnpd.git feeds/packages/net/miniupnpd
+rm -rf feeds/luci/applications/luci-app-upnp
+git clone -b main --depth 1 https://github.com/msylgj/luci-app-upnp.git feeds/luci/applications/luci-app-upnp
 # MOD Argon
 rm -rf feeds/luci/themes/luci-theme-argon
 git clone -b randomPic --depth 1 https://github.com/msylgj/luci-theme-argon.git feeds/luci/themes/luci-theme-argon
