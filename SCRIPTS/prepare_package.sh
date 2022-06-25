@@ -49,6 +49,7 @@ sed -i "s/'%D %V %C'/'Built by OPoA($(date +%Y.%m.%d))@%D %V'/g" package/base-fi
 sed -i "/DISTRIB_REVISION/d" package/base-files/files/etc/openwrt_release
 sed -i "/%D/a\ Built by OPoA($(date +%Y.%m.%d))" package/base-files/files/etc/banner
 sed -i "/openwrt_banner/d" package/emortal/default-settings/files/99-default-settings
+sed -i "/80_upnp/d" package/emortal/default-settings/files/99-default-settings
 sed -i 's/192.168.1.1/192.168.2.1/g' package/base-files/files/bin/config_generate
 sed -i 's/1608/1800/g' feeds/luci/applications/luci-app-cpufreq/root/etc/uci-defaults/10-cpufreq
 sed -i 's/2016/2208/g' feeds/luci/applications/luci-app-cpufreq/root/etc/uci-defaults/10-cpufreq
