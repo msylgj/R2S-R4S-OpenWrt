@@ -15,8 +15,6 @@ sed -i 's/Os/O3 -funsafe-math-optimizations -funroll-loops -ffunction-sections -
 
 ### 获取额外的 LuCI 应用、主题 ###
 # Miniupnpd
-rm -rf feeds/packages/net/miniupnpd
-git clone -b main --depth 1 https://github.com/msylgj/miniupnpd.git feeds/packages/net/miniupnpd
 rm -rf feeds/luci/applications/luci-app-upnp
 git clone -b main --depth 1 https://github.com/msylgj/luci-app-upnp.git feeds/luci/applications/luci-app-upnp
 # MOD Argon
