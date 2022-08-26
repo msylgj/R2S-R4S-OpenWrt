@@ -1,4 +1,4 @@
-name: Openwrt Master With Kernel-5.15
+name: Openwrt Master With Kernel-5.19
 
 on:
   # push:
@@ -58,7 +58,7 @@ jobs:
       - name: Prepare Sources
         run: |
           sudo chown -R runner:runner /home/runner/work/R2S-R4S-OpenWrt
-          git clone -b kernel-5.15 --depth 1 https://github.com/msylgj/immortalwrt.git openwrt
+          git clone -b kernel-5.19 --depth 1 https://github.com/msylgj/immortalwrt.git openwrt
       - name: Prepare Package
         run: |
           cd openwrt
@@ -100,15 +100,15 @@ jobs:
           cd ./artifact/
           gzip -d *.gz && exit 0
           gzip *.img
-          sha256sum *.gz | tee R2S-R4S-OPoA-Master-k5.15-$(date +%Y-%m-%d).sha256sum
-          mv *r2s*ext4* ./R2S-OPoA-Master-k5.15-$(date +%Y-%m-%d)-ext4.img.gz
-          mv *r4s*ext4* ./R4S-OPoA-Master-k5.15-$(date +%Y-%m-%d)-ext4.img.gz
-          mv *r2s*squashfs* ./R2S-OPoA-Master-k5.15-$(date +%Y-%m-%d)-sfs.img.gz
-          mv *r4s*squashfs* ./R4S-OPoA-Master-k5.15-$(date +%Y-%m-%d)-sfs.img.gz
+          sha256sum *.gz | tee R2S-R4S-OPoA-Master-k5.19-$(date +%Y-%m-%d).sha256sum
+          mv *r2s*ext4* ./R2S-OPoA-Master-k5.19-$(date +%Y-%m-%d)-ext4.img.gz
+          mv *r4s*ext4* ./R4S-OPoA-Master-k5.19-$(date +%Y-%m-%d)-ext4.img.gz
+          mv *r2s*squashfs* ./R2S-OPoA-Master-k5.19-$(date +%Y-%m-%d)-sfs.img.gz
+          mv *r4s*squashfs* ./R4S-OPoA-Master-k5.19-$(date +%Y-%m-%d)-sfs.img.gz
           cd ../openwrt
           cp .config ../artifact/config-full.seed
           ./scripts/diffconfig.sh > ../artifact/config-diff.seed
-          release_tag="R2S-R4S-OPoA-Master-k5.15-$(date +%Y-%m-%d)"
+          release_tag="R2S-R4S-OPoA-Master-k5.19-$(date +%Y-%m-%d)"
           echo "##[set-output name=release_tag;]$release_tag"
       - name: Upload Artifact
         uses: actions/upload-artifact@main

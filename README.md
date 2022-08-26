@@ -7,7 +7,7 @@
 <img alt="GitHub" src="https://img.shields.io/github/license/msylgj/R2S-R4S-OpenWrt?style=for-the-badge">
 <p>
 <p align="center">
-<img src="https://github.com/msylgj/R2S-R4S-OpenWrt/actions/workflows/Openwrt-Master-k5.15.yml/badge.svg">
+<img src="https://github.com/msylgj/R2S-R4S-OpenWrt/actions/workflows/Openwrt-Master-k5.19.yml/badge.svg">
 <img src="https://github.com/msylgj/R2S-R4S-OpenWrt/actions/workflows/Openwrt-21.02-k5.4.yml/badge.svg">
 <p>
 
@@ -17,7 +17,7 @@
 - 无
 ## 说明
 * ImmortalWrt master branch-SNAPSHOT / ImmortalWrt 21.02 Release
-* Linux-kernel: 5.15.x / 5.4.x
+* Linux-kernel: 5.19.x / 5.4.x
 * Fork自ImmortalWrt,个人根据**完全私人**口味进行了一定修改,建议去源库了解更多
     - [immortalwrt](https://github.com/immortalwrt/immortalwrt)
 * ipv4: 192.168.2.1
@@ -28,16 +28,13 @@
 * 支持scp和sftp
 * 无usb-wifi支持
 * 原生OP内置升级可用,固件重置可用
-* 支持SSD1306驱动的12864(0.96英寸)和12832(0.91英寸)OLED屏幕(r2s)
 * OC-1.6(r2s)/2.2-1.8(r4s)
 
 ## 插件清单
 - app:arpbind
 - app:autoreboot
 - app:cpufreq
-- app:frpc(r2s)
 - app:frps(r4s)
-- app:oled(r2s)
 - app:openclash
 - app:ramfree
 - app:serverchan
@@ -47,6 +44,7 @@
 - app:upnp
 - app:vlmcsd
 - app:wol
+- app:zerotier
 - theme:argon
 - theme:bootstrap
 
