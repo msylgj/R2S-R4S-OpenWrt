@@ -7,7 +7,7 @@
 <img alt="GitHub" src="https://img.shields.io/github/license/msylgj/R2S-R4S-OpenWrt?style=for-the-badge">
 <p>
 <p align="center">
-<img src="https://github.com/msylgj/R2S-R4S-OpenWrt/actions/workflows/Openwrt-Master-k5.19.yml/badge.svg">
+<img src="https://github.com/msylgj/R2S-R4S-OpenWrt/actions/workflows/Openwrt-Master-k6.1.yml/badge.svg">
 <img src="https://github.com/msylgj/R2S-R4S-OpenWrt/actions/workflows/Openwrt-21.02-k5.4.yml/badge.svg">
 <p>
 
@@ -17,7 +17,7 @@
 - 无
 ## 说明
 * ImmortalWrt master branch-SNAPSHOT / ImmortalWrt 21.02 Release
-* Linux-kernel: 5.19.x / 5.4.x
+* Linux-kernel: 6.1.x / 5.4.x
 * Fork自ImmortalWrt,个人根据**完全私人**口味进行了一定修改,建议去源库了解更多
     - [immortalwrt](https://github.com/immortalwrt/immortalwrt)
 * ipv4: 192.168.2.1
