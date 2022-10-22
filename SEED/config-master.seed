@@ -19,13 +19,11 @@ CONFIG_LINUX_6_1=y
 
 ### BASIC ###
 CONFIG_PACKAGE_autocore-arm=y
+CONFIG_PACKAGE_btop=y
 CONFIG_PACKAGE_coremark=y
 CONFIG_PACKAGE_default-settings-chn=y
 CONFIG_PACKAGE_dos2unix=y
 CONFIG_PACKAGE_ethtool=y
-CONFIG_PACKAGE_htop=y
-CONFIG_HTOP_LMSENSORS=y
-CONFIG_PACKAGE_iftop=y
 CONFIG_PACKAGE_odhcp6c=y
 CONFIG_PACKAGE_odhcpd-ipv6only=y
 CONFIG_PACKAGE_kmod-nf-nathelper=y
