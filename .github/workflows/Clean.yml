@@ -2,15 +2,15 @@ name: Cleaning
 
 on:
   schedule:
-    - cron: 1 8 * * 1
+    - cron: '1 8 * * 1'
   # watch:
   #   types: started
 
 jobs:
 
   Cleanup-Old-Releases:
-    runs-on: ubuntu-20.04
-    if: github.event.repository.owner.id == github.event.sender.id
+    runs-on: ubuntu-22.04
+    if: github.repository_owner_id == github.event.sender.id || github.event_name == 'schedule'
     steps:
     - name: Delete Older Releases
       uses: dev-drprasad/delete-older-releases@master
@@ -21,23 +21,26 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   Cleanup-Old-Artifacts:
-    runs-on: ubuntu-20.04
-    if: github.event.repository.owner.id == github.event.sender.id
+    runs-on: ubuntu-22.04
+    if: github.repository_owner_id == github.event.sender.id || github.event_name == 'schedule'
     steps:
     - name: Cleanup Old Action Artifacts
-      uses: kolpav/purge-artifacts-action@master
+      uses: heidi-pay/gha-delete-artifacts@main
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        token: ${{ github.token }}
-        expire-in: 30d
+        days: 30
+        max-artifacts-to-delete: 100
+        dry-run: no
 
   Cleanup-Workflow-Logs:
-    runs-on: ubuntu-20.04
-    if: github.event.repository.owner.id == github.event.sender.id
+    runs-on: ubuntu-22.04
+    if: github.repository_owner_id == github.event.sender.id || github.event_name == 'schedule'
     steps:
       - name: Delete workflow runs
         uses: Mattraks/delete-workflow-runs@main
         with:
-          token: ${{ github.token }}
+          token: ${{ secrets.GITHUB_TOKEN }}
           repository: ${{ github.repository }}
           retain_days: 30
           keep_minimum_runs: 6
