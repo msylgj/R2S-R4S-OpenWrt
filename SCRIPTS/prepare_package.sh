@@ -2,6 +2,8 @@
 clear
 
 ### 基础部分 ###
+# 使用 O2 级别的优化
+sed -i 's/Os/O2 -Wl,--gc-sections/g' include/target.mk
 # 更新 Feeds
 ./scripts/feeds update -a
 ./scripts/feeds install -a
@@ -22,6 +24,9 @@ git clone -b randomPic --depth 1 https://github.com/msylgj/luci-theme-argon.git 
 # DNSPod
 git clone -b main --depth 1 https://github.com/msylgj/luci-app-tencentddns.git feeds/luci/applications/luci-app-tencentddns
 ln -sf ../../../feeds/luci/applications/luci-app-tencentddns ./package/feeds/luci/luci-app-tencentddns
+# HomeProxy
+git clone -b master --depth 1 https://github.com/immortalwrt/homeproxy.git feeds/luci/applications/luci-app-homeproxy
+ln -sf ../../../feeds/luci/applications/luci-app-homeproxy ./package/feeds/luci/luci-app-homeproxy
 # OpenClash
 rm -rf feeds/luci/applications/luci-app-openclash
 svn co https://github.com/vernesong/OpenClash/branches/dev/luci-app-openclash feeds/luci/applications/luci-app-openclash
