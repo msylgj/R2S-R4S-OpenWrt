@@ -24,6 +24,7 @@ CONFIG_LINUX_6_1=y
 CONFIG_PACKAGE_autocore-arm=y
 CONFIG_PACKAGE_btop=y
 CONFIG_PACKAGE_coremark=y
+CONFIG_PACKAGE_dae=y
 CONFIG_PACKAGE_default-settings-chn=y
 CONFIG_PACKAGE_dos2unix=y
 CONFIG_PACKAGE_ethtool=y
