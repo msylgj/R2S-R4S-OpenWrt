@@ -3,7 +3,7 @@ clear
 
 ### 基础部分 ###
 # 使用 O2 级别的优化
-sed -i 's/Os/O2 -Wl,--gc-sections/g' include/target.mk
+sed -i 's/Os/O2/g' include/target.mk
 # 更新 Feeds
 ./scripts/feeds update -a
 ./scripts/feeds install -a
