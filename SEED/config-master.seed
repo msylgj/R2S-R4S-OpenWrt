@@ -22,7 +22,7 @@ CONFIG_TESTING_KERNEL=y
 CONFIG_LINUX_6_1=y
 
 ### BASIC ###
-CONFIG_PACKAGE_autocore-arm=y
+CONFIG_PACKAGE_autocore=y
 CONFIG_PACKAGE_btop=y
 CONFIG_PACKAGE_coremark=y
 CONFIG_PACKAGE_default-settings-chn=y
