@@ -31,9 +31,9 @@ ln -sf ../../../feeds/luci/applications/luci-app-tencentddns ./package/feeds/luc
 # OpenClash
 rm -rf feeds/luci/applications/luci-app-openclash
 svn co https://github.com/vernesong/OpenClash/branches/dev/luci-app-openclash feeds/luci/applications/luci-app-openclash
-# ServerChan
-rm -rf feeds/luci/applications/luci-app-serverchan
-git clone -b master --depth 1 https://github.com/tty228/luci-app-serverchan.git feeds/luci/applications/luci-app-serverchan
+# WeChatPush
+rm -rf feeds/luci/applications/luci-app-wechatpush
+git clone -b master --depth 1 https://github.com/tty228/luci-app-wechatpush.git feeds/luci/applications/luci-app-wechatpush
 
 ### 最后的收尾工作 ###
 # Lets Fuck
