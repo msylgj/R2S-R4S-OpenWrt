@@ -44,6 +44,7 @@ CONFIG_LUCI_LANG_zh_Hans=y
 CONFIG_PACKAGE_luci-app-arpbind=y
 CONFIG_PACKAGE_luci-app-autoreboot=y
 CONFIG_PACKAGE_luci-app-cpufreq=y
+CONFIG_PACKAGE_luci-app-daed=y
 CONFIG_PACKAGE_luci-app-firewall=y
 CONFIG_PACKAGE_luci-app-frps=m
 CONFIG_PACKAGE_luci-app-opkg=y
