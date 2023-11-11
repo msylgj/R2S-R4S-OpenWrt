@@ -31,9 +31,8 @@ CONFIG_PACKAGE_ethtool=y
 # CONFIG_PACKAGE_ipv6helper is not set
 CONFIG_PACKAGE_odhcp6c=y
 CONFIG_PACKAGE_odhcpd-ipv6only=y
-CONFIG_PACKAGE_kmod-nf-nathelper=y
-CONFIG_PACKAGE_kmod-nf-nathelper-extra=y
 CONFIG_PACKAGE_kmod-nft-fullcone=y
+CONFIG_PACKAGE_kmod-nft-tproxy=y
 
 ### BUSYBOX ###
 CONFIG_BUSYBOX_CUSTOM=y
