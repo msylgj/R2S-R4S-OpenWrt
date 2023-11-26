@@ -1,4 +1,4 @@
-name: Openwrt Master With Kernel-6.1
+name: Immortalwrt snapshot With Kernel-6.1
 
 on:
   # push:
@@ -55,7 +55,7 @@ jobs:
       - name: Make Config
         run: |
           cd openwrt
-          mv ../SEED/config-master.seed .config
+          mv ../SEED/config-snapshot.seed .config
           sed -i '/CONFIG_TARGET_ROOTFS_SQUASHFS/d' .config
           make defconfig
       - name: Make Download
@@ -88,15 +88,15 @@ jobs:
           cd ./artifact/
           gzip -d *.gz && exit 0
           gzip *.img
-          sha256sum *.gz | tee R2S-R4S-OPoA-Master-k6.1-$(date +%Y-%m-%d).sha256sum
-          mv *r2s*ext4* ./R2S-OPoA-Master-k6.1-$(date +%Y-%m-%d)-ext4.img.gz
-          mv *r4s*ext4* ./R4S-OPoA-Master-k6.1-$(date +%Y-%m-%d)-ext4.img.gz
-          mv *r2s*squashfs* ./R2S-OPoA-Master-k6.1-$(date +%Y-%m-%d)-sfs.img.gz
-          mv *r4s*squashfs* ./R4S-OPoA-Master-k6.1-$(date +%Y-%m-%d)-sfs.img.gz
+          sha256sum *.gz | tee R2S-R4S-OPoA-snapshot-k6.1-$(date +%Y-%m-%d).sha256sum
+          mv *r2s*ext4* ./R2S-OPoA-snapshot-k6.1-$(date +%Y-%m-%d)-ext4.img.gz
+          mv *r4s*ext4* ./R4S-OPoA-snapshot-k6.1-$(date +%Y-%m-%d)-ext4.img.gz
+          mv *r2s*squashfs* ./R2S-OPoA-snapshot-k6.1-$(date +%Y-%m-%d)-sfs.img.gz
+          mv *r4s*squashfs* ./R4S-OPoA-snapshot-k6.1-$(date +%Y-%m-%d)-sfs.img.gz
           cd ../openwrt
           cp .config ../artifact/config-full.seed
           ./scripts/diffconfig.sh > ../artifact/config-diff.seed
-          release_tag="R2S-R4S-OPoA-Master-k6.1-$(date +%Y-%m-%d)"
+          release_tag="R2S-R4S-OPoA-snapshot-k6.1-$(date +%Y-%m-%d)"
           echo "release_tag=${release_tag}" >>$GITHUB_ENV
       - name: Upload Artifact
         uses: actions/upload-artifact@main

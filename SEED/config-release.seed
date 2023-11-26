@@ -4,37 +4,33 @@ CONFIG_TARGET_rockchip_armv8=y
 CONFIG_TARGET_MULTI_PROFILE=y
 CONFIG_TARGET_DEVICE_rockchip_armv8_DEVICE_friendlyarm_nanopi-r2s=y
 CONFIG_TARGET_DEVICE_PACKAGES_rockchip_armv8_DEVICE_friendlyarm_nanopi-r2s=""
-CONFIG_TARGET_DEVICE_rockchip_armv8_DEVICE_friendlyarm_nanopi-r4s=y
-CONFIG_TARGET_DEVICE_PACKAGES_rockchip_armv8_DEVICE_friendlyarm_nanopi-r4s="luci-app-frps luci-i18n-frps-zh-cn"
+CONFIG_TARGET_DEVICE_rockchip_armv8_DEVICE_friendlyarm_nanopi-r4s-enterprise=y
+CONFIG_TARGET_DEVICE_PACKAGES_rockchip_armv8_DEVICE_friendlyarm_nanopi-r4s-enterprise="luci-app-frps luci-i18n-frps-zh-cn"
 CONFIG_TARGET_PER_DEVICE_ROOTFS=y
 CONFIG_TARGET_KERNEL_PARTSIZE=32
 CONFIG_TARGET_ROOTFS_PARTSIZE=960
 # CONFIG_TARGET_ROOTFS_SQUASHFS is not set
 
 ### AGGRESSIVE ###
-#CONFIG_DEVEL=y
-#CONFIG_TOOLCHAINOPTS=y
-#CONFIG_GCC_USE_VERSION_8=y
+CONFIG_BPF_TOOLCHAIN_BUILD_LLVM=y
+CONFIG_DEVEL=y
+CONFIG_TOOLCHAINOPTS=y
+CONFIG_GCC_USE_VERSION_11=y
 #CONFIG_NODEJS_16=y
 CONFIG_NODEJS_ICU_NONE=y
 
 ### BASIC ###
-CONFIG_PACKAGE_autocore-arm=y
+CONFIG_PACKAGE_autocore=y
+CONFIG_PACKAGE_btop=y
 CONFIG_PACKAGE_coremark=y
 CONFIG_PACKAGE_default-settings-chn=y
+CONFIG_PACKAGE_dos2unix=y
 CONFIG_PACKAGE_ethtool=y
-CONFIG_PACKAGE_htop=y
-CONFIG_HTOP_LMSENSORS=y
-CONFIG_PACKAGE_iftop=y
-CONFIG_PACKAGE_ip6tables-legacy=y
-CONFIG_PACKAGE_ip6tables-mod-fullconenat=y
-CONFIG_PACKAGE_iptables-legacy=y
-CONFIG_PACKAGE_iptables-mod-fullconenat=y
-CONFIG_PACKAGE_ipv6helper=y
-CONFIG_PACKAGE_kmod-ipt-raw=y
-CONFIG_PACKAGE_kmod-ipt-raw6=y
-CONFIG_PACKAGE_kmod-nf-nathelper=y
-CONFIG_PACKAGE_kmod-nf-nathelper-extra=y
+# CONFIG_PACKAGE_ipv6helper is not set
+CONFIG_PACKAGE_odhcp6c=y
+CONFIG_PACKAGE_odhcpd-ipv6only=y
+CONFIG_PACKAGE_kmod-nft-fullcone=y
+CONFIG_PACKAGE_kmod-nft-tproxy=y
 
 ### BUSYBOX ###
 CONFIG_BUSYBOX_CUSTOM=y
@@ -42,19 +38,16 @@ CONFIG_BUSYBOX_CONFIG_FEATURE_SYSLOG_INFO=y
 
 ### LUCI ###
 CONFIG_LUCI_LANG_zh_Hans=y
-CONFIG_PACKAGE_luci-app-argon-config=y
 CONFIG_PACKAGE_luci-app-arpbind=y
 CONFIG_PACKAGE_luci-app-autoreboot=y
 CONFIG_PACKAGE_luci-app-cpufreq=y
+CONFIG_PACKAGE_luci-app-daed=y
 CONFIG_PACKAGE_luci-app-firewall=y
 CONFIG_PACKAGE_luci-app-frps=m
-CONFIG_PACKAGE_luci-app-openclash=y
 CONFIG_PACKAGE_luci-app-opkg=y
 CONFIG_PACKAGE_luci-app-ramfree=y
 CONFIG_PACKAGE_luci-app-wechatpush=y
 CONFIG_PACKAGE_luci-app-tencentddns=y
-CONFIG_PACKAGE_luci-app-turboacc=y
-CONFIG_PACKAGE_TURBOACC_INCLUDE_DNSPROXY=y
 CONFIG_PACKAGE_luci-app-unblockneteasemusic=y
 CONFIG_PACKAGE_luci-app-upnp=y
 CONFIG_PACKAGE_luci-app-vlmcsd=y
@@ -63,9 +56,11 @@ CONFIG_PACKAGE_luci-app-zerotier=y
 CONFIG_PACKAGE_luci-compat=y
 CONFIG_PACKAGE_luci-lib-fs=y
 CONFIG_PACKAGE_luci-lib-ipkg=y
-CONFIG_PACKAGE_miniupnpd=y
+CONFIG_PACKAGE_daed=y
+CONFIG_PACKAGE_miniupnpd-nftables=y
 CONFIG_PACKAGE_openssh-sftp-server=y
 
 ### THEME ###
 CONFIG_PACKAGE_luci-theme-argon=y
+CONFIG_PACKAGE_luci-app-argon-config=y
 CONFIG_PACKAGE_luci-theme-bootstrap=y

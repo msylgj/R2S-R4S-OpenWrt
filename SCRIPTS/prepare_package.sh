@@ -9,9 +9,6 @@ sed -i 's/Os/O2/g' include/target.mk
 ./scripts/feeds install -a
 
 ### 必要的 Patches ###
-# BBRv2 kernel 5.15
-#wget -qO ./target/linux/generic/hack-5.15/693-Add_BBRv2_congestion_control_for_Linux_TCP.patch https://gitlab.com/sirlucjan/kernel-patches/-/raw/master/5.15/bbr2-patches/0001-bbr2-5.15-introduce-BBRv2.patch 
-#wget -qO - https://github.com/openwrt/openwrt/commit/7db9763.patch | patch -p1
 # mount cgroupv2
 # pushd feeds/packages
 # wget -qO - https://github.com/openwrt/packages/commit/7a64a5f4.patch | patch -p1
@@ -21,10 +18,6 @@ sed -i 's/Os/O2/g' include/target.mk
 # MOD Argon
 rm -rf feeds/luci/themes/luci-theme-argon
 git clone -b randomPic --depth 1 https://github.com/msylgj/luci-theme-argon.git feeds/luci/themes/luci-theme-argon
-# MOD TurboACC To Add BBRv2
-# pushd feeds/luci/applications/luci-app-turboacc
-# patch -p1 < ../../../../../PATCHES/002-mod-turboacc-switch-bbr-support-to-bbr2.patch
-# popd
 # DNSPod
 git clone -b main --depth 1 https://github.com/msylgj/luci-app-tencentddns.git feeds/luci/applications/luci-app-tencentddns
 ln -sf ../../../feeds/luci/applications/luci-app-tencentddns ./package/feeds/luci/luci-app-tencentddns
