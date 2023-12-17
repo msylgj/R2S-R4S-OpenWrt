@@ -27,6 +27,12 @@ git clone -b master --depth 1 https://github.com/tty228/luci-app-wechatpush.git 
 # geodata
 rm -rf feeds/packages/net/v2ray-geodata
 svn co https://github.com/QiuSimons/openwrt-mos/trunk/v2ray-geodata feeds/packages/net/v2ray-geodata
+# daed-next
+git clone -b rebase --depth 1 https://github.com/QiuSimons/luci-app-daed-next package/emortal/daed-next
+find ./package/emortal/daed-next/luci-app-daed-next/root/etc -type f -exec chmod +x {} \;
+# 更换 Nodejs 版本
+rm -rf ./feeds/packages/lang/node
+git clone https://github.com/sbwml/feeds_packages_lang_node-prebuilt feeds/packages/lang/node
 
 ### 最后的收尾工作 ###
 # Lets Fuck
