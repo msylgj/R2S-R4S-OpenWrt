@@ -26,8 +26,10 @@ rm -rf feeds/luci/applications/luci-app-wechatpush
 git clone -b master --depth 1 https://github.com/tty228/luci-app-wechatpush.git feeds/luci/applications/luci-app-wechatpush
 # geodata
 rm -rf feeds/packages/net/v2ray-geodata
-svn co https://github.com/QiuSimons/openwrt-mos/trunk/v2ray-geodata feeds/packages/net/v2ray-geodata
+git clone -b master --depth 1 https://github.com/QiuSimons/openwrt-mos.git ./openwrt-mos
+cp -rf ./openwrt-mos/v2ray-geodata feeds/packages/net/v2ray-geodata & rm -rf ./openwrt-mos
 # daed-next
+rm -rf package/emortal/daed-next
 git clone -b rebase --depth 1 https://github.com/QiuSimons/luci-app-daed-next package/emortal/daed-next
 find ./package/emortal/daed-next/luci-app-daed-next/root/etc -type f -exec chmod +x {} \;
 # 更换 Nodejs 版本
