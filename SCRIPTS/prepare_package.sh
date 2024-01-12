@@ -35,6 +35,7 @@ find ./package/emortal/daed-next/luci-app-daed-next/root/etc -type f -exec chmod
 # 更换 Nodejs 版本
 rm -rf ./feeds/packages/lang/node
 git clone https://github.com/sbwml/feeds_packages_lang_node-prebuilt feeds/packages/lang/node
+sed -i "/Host\/Install/{n;s/PKG_BUILD_DIR/HOST_BUILD_DIR/;}" feeds/packages/lang/node/Makefile
 
 ### 最后的收尾工作 ###
 # Lets Fuck
