@@ -65,6 +65,7 @@ jobs:
           git clone -b kernel-6.1 --depth 1 https://github.com/msylgj/immortalwrt.git openwrt
       - name: Prepare Package
         run: |
+          ls -l
           cd openwrt
           cp -r ../SCRIPTS/prepare_package.sh ./prepare_package.sh
           /bin/bash prepare_package.sh
