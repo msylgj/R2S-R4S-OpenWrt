@@ -16,6 +16,10 @@ jobs:
   build:
 
     runs-on: ubuntu-22.04
+    defaults:
+      run:
+        shell: bash
+        working-directory: /mnt
     if: github.repository_owner_id == github.event.sender.id || github.event_name == 'schedule'
 
     steps:
@@ -45,7 +49,7 @@ jobs:
           df -h
       - name: Prepare Sources
         run: |
-          sudo chown -R runner:runner /home/runner/work/R2S-R4S-OpenWrt
+          sudo chown -R runner:runner /mnt/R2S-R4S-OpenWrt
           git clone -b kernel-6.1 --depth 1 https://github.com/msylgj/immortalwrt.git openwrt
       - name: Prepare Package
         run: |
