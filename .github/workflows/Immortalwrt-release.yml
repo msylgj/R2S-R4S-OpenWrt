@@ -16,21 +16,33 @@ jobs:
   build:
 
     runs-on: ubuntu-22.04
-    defaults:
-      run:
-        shell: bash
-        working-directory: /mnt
     if: github.repository_owner_id == github.event.sender.id || github.event_name == 'schedule'
 
     steps:
-
       - name: Checkout
         uses: actions/checkout@main
       - name: Show system
         run: |
           echo -e "Total CPU cores\t: $(nproc)"
           cat /proc/cpuinfo | grep 'model name'
-          ulimit -a
+          cpu_name=$(cat /proc/cpuinfo | grep "model name" | head -n 1 | awk -F: '{print $2}' | sed 's/^[ \t]*//')
+          if [[ "$cpu_name" =~ "8370C" || "$cpu_name" =~ "7763" ]]; then
+            echo "CPU为8370C或7763，继续执行命令"
+            ulimit -a
+          else
+            echo "CPU不为8370C或7763，性能不足，停止执行命令"
+            exit 1
+          fi
+      - name: Maximize build space
+        uses: easimon/maximize-build-space@master
+        with:
+          swap-size-mb: 512
+          temp-reserve-mb: 128
+          root-reserve-mb: 3072
+          remove-dotnet: 'true'
+          remove-android: 'true'
+          remove-haskell: 'true'
+          remove-codeql: 'true'
       - name: Init build dependencies
         env:
           DEBIAN_FRONTEND: noninteractive
