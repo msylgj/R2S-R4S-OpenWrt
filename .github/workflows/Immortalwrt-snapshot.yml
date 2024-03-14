@@ -1,4 +1,4 @@
-name: Immortalwrt snapshot With Kernel-6.1
+name: Immortalwrt snapshot
 
 on:
   # push:
@@ -62,7 +62,7 @@ jobs:
       - name: Prepare Sources
         run: |
           sudo chown -R runner:runner /home/runner/work/R2S-R4S-OpenWrt
-          git clone -b kernel-6.1 --depth 1 https://github.com/msylgj/immortalwrt.git openwrt
+          git clone -b kernel-6.6 --depth 1 https://github.com/msylgj/immortalwrt.git openwrt
       - name: Prepare Package
         run: |
           ls -l
@@ -105,15 +105,15 @@ jobs:
           cd ./artifact/
           gzip -d *.gz && exit 0
           gzip *.img
-          sha256sum *.gz | tee T6-R4S-OPoA-snapshot-k6.1-$(date +%Y-%m-%d).sha256sum
-          mv *t6*ext4* ./T6-OPoA-snapshot-k6.1-$(date +%Y-%m-%d)-ext4.img.gz
-          mv *r4s*ext4* ./R4S-OPoA-snapshot-k6.1-$(date +%Y-%m-%d)-ext4.img.gz
-          mv *t6*squashfs* ./T6-OPoA-snapshot-k6.1-$(date +%Y-%m-%d)-sfs.img.gz
-          mv *r4s*squashfs* ./R4S-OPoA-snapshot-k6.1-$(date +%Y-%m-%d)-sfs.img.gz
+          sha256sum *.gz | tee T6-R4S-OPoA-snapshot-K6.6-$(date +%Y-%m-%d).sha256sum
+          mv *t6*ext4* ./T6-OPoA-snapshot-K6.6-$(date +%Y-%m-%d)-ext4.img.gz
+          mv *r4s*ext4* ./R4S-OPoA-snapshot-K6.6-$(date +%Y-%m-%d)-ext4.img.gz
+          mv *t6*squashfs* ./T6-OPoA-snapshot-K6.6-$(date +%Y-%m-%d)-sfs.img.gz
+          mv *r4s*squashfs* ./R4S-OPoA-snapshot-K6.6-$(date +%Y-%m-%d)-sfs.img.gz
           cd ../openwrt
           cp .config ../artifact/config-full.seed
           ./scripts/diffconfig.sh > ../artifact/config-diff.seed
-          release_tag="T6-R4S-OPoA-snapshot-k6.1-$(date +%Y-%m-%d)"
+          release_tag="T6-R4S-OPoA-snapshot-K6.6-$(date +%Y-%m-%d)"
           echo "release_tag=${release_tag}" >>$GITHUB_ENV
       - name: Upload Artifact
         uses: actions/upload-artifact@main
@@ -122,7 +122,7 @@ jobs:
           path: ./artifact/
       - name: Create release
         id: create_release
-        uses: ncipollo/release-action@v1.12.0
+        uses: ncipollo/release-action@main
         with:
           name: ${{ env.release_tag }}-ROM
           allowUpdates: true
