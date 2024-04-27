@@ -5,7 +5,7 @@ CONFIG_TARGET_MULTI_PROFILE=y
 CONFIG_TARGET_DEVICE_rockchip_armv8_DEVICE_friendlyarm_nanopi-r4s-enterprise=y
 CONFIG_TARGET_DEVICE_PACKAGES_rockchip_armv8_DEVICE_friendlyarm_nanopi-r4s-enterprise=""
 CONFIG_TARGET_DEVICE_rockchip_armv8_DEVICE_friendlyarm_nanopc-t6=y
-CONFIG_TARGET_DEVICE_PACKAGES_rockchip_armv8_DEVICE_friendlyarm_nanopc-t6="luci-app-aria2 luci-i18n-aria2-zh-cn luci-app-filebrowser luci-i18n-filebrowser-zh-cn luci-app-gowebdav luci-i18n-gowebdav-zh-cn luci-app-frps luci-i18n-frps-zh-cn luci-app-qbittorrent luci-i18n-qbittorrent-zh-cn luci-app-dockerman luci-i18n-dockerman-zh-cn luci-app-diskman luci-i18n-diskman-zh-cn"
+CONFIG_TARGET_DEVICE_PACKAGES_rockchip_armv8_DEVICE_friendlyarm_nanopc-t6="luci-app-aria2 luci-i18n-aria2-zh-cn luci-app-filebrowser-go luci-i18n-filebrowser-go-zh-cn luci-app-gowebdav luci-i18n-gowebdav-zh-cn luci-app-frps luci-i18n-frps-zh-cn luci-app-qbittorrent luci-i18n-qbittorrent-zh-cn luci-app-dockerman luci-i18n-dockerman-zh-cn luci-app-diskman luci-i18n-diskman-zh-cn"
 CONFIG_TARGET_PER_DEVICE_ROOTFS=y
 CONFIG_TARGET_KERNEL_PARTSIZE=32
 CONFIG_TARGET_ROOTFS_PARTSIZE=960
@@ -42,13 +42,13 @@ CONFIG_BUSYBOX_CONFIG_FEATURE_SYSLOG_INFO=y
 
 ### LUCI ###
 CONFIG_LUCI_LANG_zh_Hans=y
-CONFIG_PACKAGE_luci-app-aria2=m
+#CONFIG_PACKAGE_luci-app-aria2=m
 CONFIG_PACKAGE_luci-app-arpbind=y
 CONFIG_PACKAGE_luci-app-autoreboot=y
 CONFIG_PACKAGE_luci-app-cpufreq=y
 #CONFIG_PACKAGE_luci-app-daed=y
 CONFIG_PACKAGE_luci-app-firewall=y
-CONFIG_PACKAGE_luci-app-filebrowser=m
+CONFIG_PACKAGE_luci-app-filebrowser-go=m
 CONFIG_PACKAGE_luci-app-gowebdav=m
 CONFIG_PACKAGE_luci-app-frps=m
 CONFIG_PACKAGE_luci-app-opkg=y
