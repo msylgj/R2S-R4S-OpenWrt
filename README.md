@@ -7,7 +7,7 @@
 <img alt="GitHub" src="https://img.shields.io/github/license/msylgj/R2S-R4S-OpenWrt?style=for-the-badge">
 <p>
 <p align="center">
-<img src="https://github.com/msylgj/R2S-R4S-OpenWrt/actions/workflows/Immortalwrt-snapshot-k6.1.yml/badge.svg">
+<img src="https://github.com/msylgj/R2S-R4S-OpenWrt/actions/workflows/Immortalwrt-snapshot.yml/badge.svg">
 <img src="https://github.com/msylgj/R2S-R4S-OpenWrt/actions/workflows/Immortalwrt-release.yml/badge.svg">
 <p>
 
