@@ -4,6 +4,8 @@ clear
 ### 基础部分 ###
 # 使用 O2 级别的优化
 sed -i 's/Os/O2/g' include/target.mk
+# 添加mihomo feed
+echo "src-git mihomo https://github.com/morytyann/OpenWrt-mihomo.git;main" >> "feeds.conf.default"
 # 更新 Feeds
 ./scripts/feeds update -a
 ./scripts/feeds install -a
