@@ -1,4 +1,4 @@
-<h1 align="center">NanoPi-R2S/R4S-OpenWrt</h1>
+<h1 align="center">NanoPi-R2S/R4S/T6-OpenWrt</h1>
 <p align="center">
 <img src="https://forthebadge.com/images/badges/built-with-love.svg">
 <p>
@@ -17,29 +17,33 @@
 - 无
 ## 说明
 * ImmortalWrt master branch-SNAPSHOT / ImmortalWrt Release
-* Linux-kernel: 6.1.x / 5.15.x
+* Linux-kernel: 6.6.x / 5.15.x
 * Fork自ImmortalWrt,个人根据**完全私人**口味进行了一定修改,建议去源库了解更多
     - [immortalwrt](https://github.com/immortalwrt/immortalwrt)
 * ipv4: 192.168.2.1
 * username: root
 * password: 空 / password
 * 原汁原味非杂交! 感谢Immortalwrt/R2S Club/R4S Club/天灵/GC/QC等诸多大佬的努力!
-* 添加Flow Offload+Full Cone Nat+BBR
+* 添加Flow Offload+Full Cone Nat
 * 支持scp和sftp
 * 无usb-wifi支持
 * 原生OP内置升级可用,固件重置可用
-* OC-1.6(r2s)/2.2-1.8(r4s)
+* OC-1.6(r2s)/2.2-1.8(r4s)/2.4-1.8(T6)
 
 ## 插件清单
-- app:arpbind
-- app:autoreboot
-- app:cpufreq
+- 仅供参考，不同设备和分支插件略有区别，具体查看SEED/config
+- app:arpbind=y
+- app:autoreboot=y
+- app:cpufreq=y
 - app:daed
-- app:frps(r4s)
+- app:dufs
+- app:filebrowser-go
+- app:frps
+- app:mihomo
 - app:ramfree
-- app:serverchan
+- app:wechatpush
+- app:qbittorrent
 - app:tencentddns
-- app:unblockneteasemusic
 - app:vlmcsd
 - app:wol
 - app:zerotier
