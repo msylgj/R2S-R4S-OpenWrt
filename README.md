@@ -14,7 +14,7 @@
 <h1 align="center">请勿用于商业用途!!!</h1>
 
 ## 当前已知问题:
-- 无
+- NanoPC-T6 usb3-A暂不可用，type-c可用
 ## 说明
 * ImmortalWrt master branch-SNAPSHOT / ImmortalWrt Release
 * Linux-kernel: 6.6.x / 5.15.x
