@@ -32,9 +32,9 @@
 
 ## 插件清单
 - 仅供参考，不同设备和分支插件略有区别，具体查看SEED/config
-- app:arpbind=y
-- app:autoreboot=y
-- app:cpufreq=y
+- app:arpbind
+- app:autoreboot
+- app:cpufreq
 - app:daed
 - app:dufs
 - app:filebrowser-go
