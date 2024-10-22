@@ -28,10 +28,11 @@ rm -rf feeds/luci/applications/luci-app-wechatpush
 git clone -b master --depth 1 https://github.com/tty228/luci-app-wechatpush.git feeds/luci/applications/luci-app-wechatpush
 # geodata
 rm -rf feeds/packages/net/v2ray-geodata
-git clone -b master --depth 1 https://github.com/QiuSimons/openwrt-mos.git ./openwrt-mos
-cp -rf ./openwrt-mos/v2ray-geodata feeds/packages/net/v2ray-geodata & rm -rf ./openwrt-mos
+git clone -b master --depth 1 https://github.com/QiuSimons/openwrt-mos.git openwrt-mos
+cp -rf openwrt-mos/v2ray-geodata feeds/packages/net/v2ray-geodata
+rm -rf openwrt-mos
 # 更换 Nodejs 版本
-rm -rf ./feeds/packages/lang/node
+rm -rf feeds/packages/lang/node
 git clone https://github.com/sbwml/feeds_packages_lang_node-prebuilt feeds/packages/lang/node
 
 ### 最后的收尾工作 ###
