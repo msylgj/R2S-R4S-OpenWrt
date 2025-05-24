@@ -17,7 +17,7 @@
 - 无
 ## 说明
 * ImmortalWrt master branch-SNAPSHOT / ImmortalWrt Release
-* Linux-kernel: 6.6.x / 5.15.x
+* Linux-kernel: 6.12.x / 5.15.x
 * Fork自ImmortalWrt,个人根据**完全私人**口味进行了一定修改,建议去源库了解更多
     - [immortalwrt](https://github.com/immortalwrt/immortalwrt)
 * ipv4: 192.168.2.1
@@ -35,12 +35,11 @@
 - app:arpbind
 - app:autoreboot
 - app:cpufreq
-- app:daed
+- app:ddns-go
 - app:frps
-- app:mihomo
+- app:nikki
 - app:ramfree
 - app:wechatpush
-- app:tencentddns
 - app:vlmcsd
 - app:wol
 - app:zerotier
