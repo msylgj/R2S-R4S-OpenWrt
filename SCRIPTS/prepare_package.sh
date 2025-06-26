@@ -13,7 +13,9 @@ echo "src-git nikki https://github.com/nikkinikki-org/OpenWrt-nikki.git;main" >>
 ### 必要的 Patches ###
 # MOD dae dns
 sed -i '/webrender ; \\/i\        pushd $(PKG_BUILD_DIR)\/dae-core ; \\' feeds/packages/net/daed/Makefile
-sed -i '/webrender ; \\/i\        wget -qO - https://github.com/QiuSimons/luci-app-daed/raw/master/patchset/kix-feat_lockless_concurrency_udp_dns.patch | patch -p1 ; \\' feeds/packages/net/daed/Makefile
+sed -i '/webrender ; \\/i\        wget -qO - https://github.com/daeuniverse/dae/pull/763.patch | patch -p1 ; \\' feeds/packages/net/daed/Makefile
+sed -i '/webrender ; \\/i\        wget -qO - https://github.com/daeuniverse/dae/pull/839.patch | patch -p1 ; \\' feeds/packages/net/daed/Makefile
+sed -i '/webrender ; \\/i\        wget -qO - https://github.com/daeuniverse/dae/commit/a6cd9ef.patch | patch -p1 ; \\' feeds/packages/net/daed/Makefile
 sed -i '/webrender ; \\/i\        popd ; \\' feeds/packages/net/daed/Makefile
 
 ### 获取额外的 LuCI 应用、主题 ###
