@@ -39,6 +39,7 @@ CONFIG_BUSYBOX_CONFIG_FEATURE_SYSLOG_INFO=y
 
 ### LUCI ###
 CONFIG_LUCI_LANG_zh_Hans=y
+CONFIG_PACKAGE_luci-app-3cat=y
 CONFIG_PACKAGE_luci-app-arpbind=y
 CONFIG_PACKAGE_luci-app-autoreboot=y
 CONFIG_PACKAGE_luci-app-cpufreq=y
