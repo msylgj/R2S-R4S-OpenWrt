@@ -4,8 +4,6 @@ clear
 ### 基础部分 ###
 # 使用 O2 级别的优化
 sed -i 's/Os/O2/g' include/target.mk
-# 添加nikki(mihomo) feed
-echo "src-git nikki https://github.com/nikkinikki-org/OpenWrt-nikki.git;main" >> "feeds.conf.default"
 # 更新 Feeds
 ./scripts/feeds update -a
 ./scripts/feeds install -a
@@ -20,6 +18,13 @@ cp -rf kixdaed/daed feeds/packages/net/daed
 rm -rf kixdaed
 
 ### 获取额外的 LuCI 应用、主题 ###
+# Nikki with SmartGroup
+git clone -b main --depth 1 https://github.com/msylgj/OpenWrt-nikki.git nikki
+cp -rf nikki/luci-app-nikki feeds/luci/applications/luci-app-nikki
+cp -rf nikki/nikki feeds/packages/net/nikki
+ln -sf ../../../feeds/luci/applications/luci-app-nikki ./package/feeds/luci/luci-app-nikki
+ls -sf ../../../feeds/packages/net/nikki ./package/feeds/packages/nikki
+rm -rf nikki
 # MOD Argon
 rm -rf feeds/luci/themes/luci-theme-argon
 git clone -b randomPic --depth 1 https://github.com/msylgj/luci-theme-argon.git feeds/luci/themes/luci-theme-argon
