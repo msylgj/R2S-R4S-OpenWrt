@@ -25,6 +25,17 @@ cp -rf nikki/nikki feeds/packages/net/nikki
 ln -sf ../../../feeds/luci/applications/luci-app-nikki ./package/feeds/luci/luci-app-nikki
 ln -sf ../../../feeds/packages/net/nikki ./package/feeds/packages/nikki
 rm -rf nikki
+# Add luci-app-bandix & luci-app-einat
+git clone -b master --depth 1 https://github.com/QiuSimons/OpenWrt-Add.git OpenWrt-Add
+cp -rf OpenWrt-Add/luci-app-bandix/luci-app-bandix feeds/luci/applications/luci-app-bandix
+cp -rf OpenWrt-Add/luci-app-einat feeds/luci/applications/luci-app-einat
+cp -rf OpenWrt-Add/openwrt-bandix/openwrt-bandix feeds/packages/net/openwrt-bandix
+cp -rf OpenWrt-Add/openwrt-einat-ebpf feeds/packages/net/openwrt-einat-ebpf
+ln -sf ../../../feeds/luci/applications/luci-app-bandix ./package/feeds/luci/luci-app-bandix
+ln -sf ../../../feeds/luci/applications/luci-app-einat ./package/feeds/luci/luci-app-einat
+ln -sf ../../../feeds/packages/net/openwrt-bandix ./package/feeds/packages/openwrt-bandix
+ln -sf ../../../feeds/packages/net/openwrt-einat-ebpf ./package/feeds/packages/openwrt-einat-ebpf
+rm -rf OpenWrt-Add
 # MOD Argon
 rm -rf feeds/luci/themes/luci-theme-argon
 git clone -b randomPic --depth 1 https://github.com/msylgj/luci-theme-argon.git feeds/luci/themes/luci-theme-argon
