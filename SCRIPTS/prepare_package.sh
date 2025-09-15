@@ -9,13 +9,13 @@ sed -i 's/Os/O2/g' include/target.mk
 ./scripts/feeds install -a
 
 ### 必要的 Patches ###
-# 替换原有的 luci-app-daed 和 daed 使用kixdaed
-git clone -b master --depth 1 https://github.com/QiuSimons/luci-app-daed.git kixdaed
-rm -rf feeds/luci/applications/luci-app-daed
-rm -rf feeds/packages/net/daed
-cp -rf kixdaed/luci-app-daed feeds/luci/applications/luci-app-daed
-cp -rf kixdaed/daed feeds/packages/net/daed
-rm -rf kixdaed
+# 替换原有的 luci-app-dae 和 dae 使用dae-next from CA
+git clone -b next --depth 1 https://github.com/QiuSimons/luci-app-dae.git dae-next
+rm -rf feeds/luci/applications/luci-app-dae
+rm -rf feeds/packages/net/dae
+cp -rf dae-next/luci-app-dae feeds/luci/applications/luci-app-daed
+cp -rf dae-next/dae feeds/packages/net/dae
+rm -rf dae-next
 
 ### 获取额外的 LuCI 应用、主题 ###
 # Nikki with SmartGroup
@@ -25,17 +25,25 @@ cp -rf nikki/nikki feeds/packages/net/nikki
 ln -sf ../../../feeds/luci/applications/luci-app-nikki ./package/feeds/luci/luci-app-nikki
 ln -sf ../../../feeds/packages/net/nikki ./package/feeds/packages/nikki
 rm -rf nikki
-# Add luci-app-bandix & luci-app-einat
+
+# OpenWrt-Add start
 git clone -b master --depth 1 https://github.com/QiuSimons/OpenWrt-Add.git OpenWrt-Add
+# Add luci-app-bandix based on ebpf
 cp -rf OpenWrt-Add/luci-app-bandix/luci-app-bandix feeds/luci/applications/luci-app-bandix
-cp -rf OpenWrt-Add/luci-app-einat feeds/luci/applications/luci-app-einat
 cp -rf OpenWrt-Add/openwrt-bandix/openwrt-bandix feeds/packages/net/openwrt-bandix
-cp -rf OpenWrt-Add/openwrt-einat-ebpf feeds/packages/net/openwrt-einat-ebpf
 ln -sf ../../../feeds/luci/applications/luci-app-bandix ./package/feeds/luci/luci-app-bandix
-ln -sf ../../../feeds/luci/applications/luci-app-einat ./package/feeds/luci/luci-app-einat
 ln -sf ../../../feeds/packages/net/openwrt-bandix ./package/feeds/packages/openwrt-bandix
+
+# Add luci-app-einat based on ebpf (fullcone nat)
+cp -rf OpenWrt-Add/luci-app-einat feeds/luci/applications/luci-app-einat
+cp -rf OpenWrt-Add/openwrt-einat-ebpf feeds/packages/net/openwrt-einat-ebpf
+ln -sf ../../../feeds/luci/applications/luci-app-einat ./package/feeds/luci/luci-app-einat
 ln -sf ../../../feeds/packages/net/openwrt-einat-ebpf ./package/feeds/packages/openwrt-einat-ebpf
+rm -rf pacakge/network/config/firewall4/patches/001-firewall4-add-support-for-fullcone-nat.patch
+
 rm -rf OpenWrt-Add
+# OpenWrt-Add end
+
 # MOD Argon
 rm -rf feeds/luci/themes/luci-theme-argon
 git clone -b randomPic --depth 1 https://github.com/msylgj/luci-theme-argon.git feeds/luci/themes/luci-theme-argon
