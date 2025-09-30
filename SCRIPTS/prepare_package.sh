@@ -18,8 +18,8 @@ cp -rf dae-next/dae feeds/packages/net/dae
 rm -rf dae-next
 
 ### 获取额外的 LuCI 应用、主题 ###
-# Nikki with SmartGroup
-git clone -b main --depth 1 https://github.com/msylgj/OpenWrt-nikki.git nikki
+# Nikki
+git clone -b main --depth 1 https://github.com/nikkinikki-org/OpenWrt-nikki.git nikki
 cp -rf nikki/luci-app-nikki feeds/luci/applications/luci-app-nikki
 cp -rf nikki/nikki feeds/packages/net/nikki
 ln -sf ../../../feeds/luci/applications/luci-app-nikki ./package/feeds/luci/luci-app-nikki
