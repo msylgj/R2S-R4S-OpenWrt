@@ -34,13 +34,6 @@ cp -rf OpenWrt-Add/openwrt-bandix/openwrt-bandix feeds/packages/net/openwrt-band
 ln -sf ../../../feeds/luci/applications/luci-app-bandix ./package/feeds/luci/luci-app-bandix
 ln -sf ../../../feeds/packages/net/openwrt-bandix ./package/feeds/packages/openwrt-bandix
 
-# Add luci-app-einat based on ebpf (fullcone nat)
-cp -rf OpenWrt-Add/luci-app-einat feeds/luci/applications/luci-app-einat
-cp -rf OpenWrt-Add/openwrt-einat-ebpf feeds/packages/net/openwrt-einat-ebpf
-ln -sf ../../../feeds/luci/applications/luci-app-einat ./package/feeds/luci/luci-app-einat
-ln -sf ../../../feeds/packages/net/openwrt-einat-ebpf ./package/feeds/packages/openwrt-einat-ebpf
-rm -rf pacakge/network/config/firewall4/patches/001-firewall4-add-support-for-fullcone-nat.patch
-
 rm -rf OpenWrt-Add
 # OpenWrt-Add end
 
@@ -53,9 +46,6 @@ git clone -b master --depth 1 https://github.com/tty228/luci-app-wechatpush.git 
 # geodata
 rm -rf feeds/packages/net/v2ray-geodata
 git clone -b main --depth 1 https://github.com/JohnsonRan/packages_net_v2ray-geodata.git feeds/packages/net/v2ray-geodata
-# 更换 Nodejs 版本
-rm -rf feeds/packages/lang/node
-git clone https://github.com/sbwml/feeds_packages_lang_node-prebuilt feeds/packages/lang/node
 
 ### 最后的收尾工作 ###
 # Lets Fuck
