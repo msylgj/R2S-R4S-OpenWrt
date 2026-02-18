@@ -48,7 +48,7 @@ rm -rf feeds/luci/applications/luci-app-wechatpush
 git clone -b master --depth 1 https://github.com/tty228/luci-app-wechatpush.git feeds/luci/applications/luci-app-wechatpush
 # geodata
 rm -rf feeds/packages/net/v2ray-geodata
-git clone -b main --depth 1 https://github.com/JohnsonRan/packages_net_v2ray-geodata.git feeds/packages/net/v2ray-geodata
+git clone -b main --depth 1 https://github.com/msylgj/v2ray-geodata.git feeds/packages/net/v2ray-geodata
 
 ### 最后的收尾工作 ###
 # Lets Fuck
