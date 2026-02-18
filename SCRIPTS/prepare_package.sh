@@ -16,6 +16,9 @@ rm -rf feeds/packages/net/dae
 cp -rf kixdae/luci-app-dae feeds/luci/applications/luci-app-dae
 cp -rf kixdae/dae feeds/packages/net/dae
 rm -rf kixdae
+# 更新golang1.26
+rm -rf feeds/packages/lang/golang
+git clone https://github.com/sbwml/packages_lang_golang -b 26.x feeds/packages/lang/golang
 
 ### 获取额外的 LuCI 应用、主题 ###
 # Nikki
