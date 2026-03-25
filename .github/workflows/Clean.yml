@@ -9,7 +9,7 @@ on:
 jobs:
 
   Cleanup-Old-Releases:
-    runs-on: ubuntu-22.04
+    runs-on: debian-11
     if: github.repository_owner_id == github.event.sender.id || github.event_name == 'schedule'
     steps:
     - name: Delete Older Releases
@@ -21,7 +21,7 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   Cleanup-Old-Artifacts:
-    runs-on: ubuntu-22.04
+    runs-on: debian-11
     if: github.repository_owner_id == github.event.sender.id || github.event_name == 'schedule'
     steps:
     - name: Cleanup Old Action Artifacts
@@ -34,7 +34,7 @@ jobs:
         dry-run: no
 
   Cleanup-Workflow-Logs:
-    runs-on: ubuntu-22.04
+    runs-on: debian-11
     if: github.repository_owner_id == github.event.sender.id || github.event_name == 'schedule'
     steps:
       - name: Delete workflow runs
