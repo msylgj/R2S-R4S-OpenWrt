@@ -41,7 +41,7 @@ rm -rf OpenWrt-Add
 git clone -b argonLogin-Mix --depth 1 https://github.com/msylgj/luci-theme-aurora.git feeds/luci/themes/luci-theme-aurora
 git clone -b master --depth 1 https://github.com/msylgj/luci-app-aurora-config.git feeds/luci/applications/luci-app-aurora-config
 ln -sf ../../../feeds/luci/applications/luci-app-aurora-config ./package/feeds/luci/luci-app-aurora-config
-ln -sf ../../../feeds/luci/themes/luci-theme-aurora ./package/feeds/themes/luci-theme-aurora
+ln -sf ../../../feeds/luci/themes/luci-theme-aurora ./package/feeds/luci/luci-theme-aurora
 # WeChatPush
 rm -rf feeds/luci/applications/luci-app-wechatpush
 git clone -b master --depth 1 https://github.com/tty228/luci-app-wechatpush.git feeds/luci/applications/luci-app-wechatpush
