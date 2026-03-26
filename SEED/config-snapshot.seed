@@ -64,6 +64,6 @@ CONFIG_PACKAGE_luci-lib-fs=y
 CONFIG_PACKAGE_openssh-sftp-server=y
 
 ### THEME ###
-CONFIG_PACKAGE_luci-theme-argon=y
-CONFIG_PACKAGE_luci-app-argon-config=y
+CONFIG_PACKAGE_luci-theme-aurora=y
+CONFIG_PACKAGE_luci-app-aurora-config=y
 CONFIG_PACKAGE_luci-theme-bootstrap=y

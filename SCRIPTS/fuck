@@ -6,15 +6,15 @@ rm -rf `ls | egrep -v '(upper|.fs_state)'`
 cd /overlay/upper
 rm -rf `ls | egrep -v '(etc|usr|www)'`
 cd /overlay/upper/etc
-rm -rf `ls | egrep -v '(config|crontabs|daed|filebrowser|mihomo|bench.log|passwd|qBittorrent|shadow|sysupgrade.conf)'`
+rm -rf `ls | egrep -v '(config|crontabs|dae|daed|ddns-go|filebrowser|homeproxy|nikki|bench.log|passwd|qBittorrent|sing-box|shadow|sysupgrade.conf)'`
 cd /overlay/upper/etc/config
-rm -rf `ls | egrep -v '(argon|arpbind|autoreboot|dhcp|filebrowser|firewall|frp|frps|fstab|mihomo|network|oled|qbittorrent|wechatpush|system|tencentddns|unblockneteasemusic|upnpd|zerotier)'`
-cd /overlay/upper/etc/mihomo
+rm -rf `ls | egrep -v '(3cat|aurora|arpbind|autoreboot|bandix|dae|daed|ddns-go|dhcp|filebrowser|firewall|frp|frps|fstab|homeproxy|nikki|network|oled|qbittorrent|sing-box|wechatpush|system|tencentddns|unblockneteasemusic|upnpd|zerotier)'`
+cd /overlay/upper/etc/nikki
 rm -rf `ls | egrep -v '(profiles)'`
 cd /overlay/upper/usr
 rm -rf `ls | egrep -v '(share)'`
 cd /overlay/upper/usr/share
-rm -rf `ls | egrep -v '(unblockneteasemusic)'`
+rm -rf `ls | egrep -v '(bandix|wechatpush|unblockneteasemusic|v2ray|xray)'`
 cd /overlay/upper/www/luci-static
-rm -rf `ls | egrep -v '(argon)'`
+rm -rf `ls | egrep -v '(aurora)'`
 sleep 5 && touch /etc/banner && reboot
