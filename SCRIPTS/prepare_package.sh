@@ -39,7 +39,7 @@ rm -rf OpenWrt-Add
 
 # Aurora theme with randomPic
 git clone -b argonLogin-Mix --depth 1 https://github.com/msylgj/luci-theme-aurora.git feeds/luci/themes/luci-theme-aurora
-git clone -b master --depth 1 https://github.com/msylgj/luci-app-aurora-config.git feeds/luci/applications/luci-app-aurora-config
+git clone -b argonMix --depth 1 https://github.com/msylgj/luci-app-aurora-config.git feeds/luci/applications/luci-app-aurora-config
 ln -sf ../../../feeds/luci/applications/luci-app-aurora-config ./package/feeds/luci/luci-app-aurora-config
 ln -sf ../../../feeds/luci/themes/luci-theme-aurora ./package/feeds/luci/luci-theme-aurora
 # WeChatPush
