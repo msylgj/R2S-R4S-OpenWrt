@@ -1,8 +1,5 @@
 <h1 align="center">NanoPi-R2S/R4S/T6-OpenWrt</h1>
 <p align="center">
-<img src="https://forthebadge.com/images/badges/built-with-love.svg">
-<p>
-<p align="center">
 <img alt="GitHub All Releases" src="https://img.shields.io/github/downloads/msylgj/R2S-R4S-OpenWrt/total?style=for-the-badge">
 <img alt="GitHub" src="https://img.shields.io/github/license/msylgj/R2S-R4S-OpenWrt?style=for-the-badge">
 <p>
