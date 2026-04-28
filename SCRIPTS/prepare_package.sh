@@ -22,8 +22,10 @@ rm -rf kixdae
 git clone -b main --depth 1 https://github.com/nikkinikki-org/OpenWrt-nikki.git nikki
 cp -rf nikki/luci-app-nikki feeds/luci/applications/luci-app-nikki
 cp -rf nikki/nikki feeds/packages/net/nikki
+cp -rf nikki/mihomo-alpha feeds/packages/net/mihomo
 ln -sf ../../../feeds/luci/applications/luci-app-nikki ./package/feeds/luci/luci-app-nikki
 ln -sf ../../../feeds/packages/net/nikki ./package/feeds/packages/nikki
+ln -sf ../../../feeds/packages/net/mihomo ./package/feeds/packages/mihomo
 rm -rf nikki
 
 # OpenWrt-Add start
