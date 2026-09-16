@@ -39,11 +39,9 @@ ln -sf ../../../feeds/packages/net/openwrt-bandix ./package/feeds/packages/openw
 rm -rf OpenWrt-Add
 # OpenWrt-Add end
 
-# Aurora theme with randomPic
-git clone -b argonLogin-Mix --depth 1 https://github.com/msylgj/luci-theme-aurora.git feeds/luci/themes/luci-theme-aurora
-git clone -b argonMix --depth 1 https://github.com/msylgj/luci-app-aurora-config.git feeds/luci/applications/luci-app-aurora-config
-ln -sf ../../../feeds/luci/applications/luci-app-aurora-config ./package/feeds/luci/luci-app-aurora-config
-ln -sf ../../../feeds/luci/themes/luci-theme-aurora ./package/feeds/luci/luci-theme-aurora
+# Footstrap theme with randomPic
+rm -rf feeds/luci/themes/luci-theme-footstrap
+git clone -b main --depth 1 https://github.com/msylgj/luci-theme-footstrap.git feeds/luci/themes/luci-theme-footstrap
 # WeChatPush
 rm -rf feeds/luci/applications/luci-app-wechatpush
 git clone -b master --depth 1 https://github.com/tty228/luci-app-wechatpush.git feeds/luci/applications/luci-app-wechatpush

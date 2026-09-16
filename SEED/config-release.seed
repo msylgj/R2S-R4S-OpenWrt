@@ -34,7 +34,6 @@ CONFIG_PACKAGE_ethtool=y
 # CONFIG_PACKAGE_ipv6helper is not set
 CONFIG_PACKAGE_odhcp6c=y
 CONFIG_PACKAGE_odhcpd-ipv6only=y
-CONFIG_PACKAGE_ucode-mod-math=y
 CONFIG_PACKAGE_kmod-nft-fullcone=y
 CONFIG_PACKAGE_kmod-nft-tproxy=y
 
@@ -67,6 +66,5 @@ CONFIG_PACKAGE_miniupnpd-nftables=y
 CONFIG_PACKAGE_openssh-sftp-server=y
 
 ### THEME ###
-CONFIG_PACKAGE_luci-theme-aurora=y
-CONFIG_PACKAGE_luci-app-aurora-config=y
 CONFIG_PACKAGE_luci-theme-bootstrap=y
+CONFIG_PACKAGE_luci-theme-footstrap=y
