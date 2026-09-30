@@ -10,7 +10,7 @@ sed -i 's/Os/O2/g' include/target.mk
 
 ### 必要的 Patches ###
 # 替换原有的 luci-app-dae 和 dae 使用kixdae
-git clone -b kix --depth 1 https://github.com/QiuSimons/luci-app-dae.git kixdae
+git clone -b dae_2026.09.15-r1 --single-branch --depth 1 https://github.com/QiuSimons/luci-app-dae.git kixdae
 rm -rf feeds/luci/applications/luci-app-dae
 rm -rf feeds/packages/net/dae
 cp -rf kixdae/luci-app-dae feeds/luci/applications/luci-app-dae
@@ -19,7 +19,7 @@ rm -rf kixdae
 
 ### 获取额外的 LuCI 应用、主题 ###
 # Nikki
-git clone -b main --depth 1 https://github.com/nikkinikki-org/OpenWrt-nikki.git nikki
+git clone -b main --single-branch --depth 1 https://github.com/nikkinikki-org/OpenWrt-nikki.git nikki
 cp -rf nikki/luci-app-nikki feeds/luci/applications/luci-app-nikki
 cp -rf nikki/nikki feeds/packages/net/nikki
 cp -rf nikki/mihomo-alpha feeds/packages/net/mihomo
@@ -29,7 +29,7 @@ ln -sf ../../../feeds/packages/net/mihomo ./package/feeds/packages/mihomo
 rm -rf nikki
 
 # OpenWrt-Add start
-git clone -b master --depth 1 https://github.com/QiuSimons/OpenWrt-Add.git OpenWrt-Add
+git clone -b master --single-branch --depth 1 https://github.com/QiuSimons/OpenWrt-Add.git OpenWrt-Add
 # Add luci-app-bandix based on ebpf
 cp -rf OpenWrt-Add/luci-app-bandix/luci-app-bandix feeds/luci/applications/luci-app-bandix
 cp -rf OpenWrt-Add/openwrt-bandix/openwrt-bandix feeds/packages/net/openwrt-bandix
@@ -41,13 +41,13 @@ rm -rf OpenWrt-Add
 
 # Footstrap theme with randomPic
 rm -rf feeds/luci/themes/luci-theme-footstrap
-git clone -b main --depth 1 https://github.com/msylgj/luci-theme-footstrap.git feeds/luci/themes/luci-theme-footstrap
+git clone -b main --single-branch --depth 1 https://github.com/msylgj/luci-theme-footstrap.git feeds/luci/themes/luci-theme-footstrap
 # WeChatPush
 rm -rf feeds/luci/applications/luci-app-wechatpush
-git clone -b master --depth 1 https://github.com/tty228/luci-app-wechatpush.git feeds/luci/applications/luci-app-wechatpush
+git clone -b master --single-branch--depth 1 https://github.com/tty228/luci-app-wechatpush.git feeds/luci/applications/luci-app-wechatpush
 # geodata
 rm -rf feeds/packages/net/v2ray-geodata
-git clone -b main --depth 1 https://github.com/msylgj/v2ray-geodata.git feeds/packages/net/v2ray-geodata
+git clone -b main --single-branch --depth 1 https://github.com/msylgj/v2ray-geodata.git feeds/packages/net/v2ray-geodata
 
 ### 最后的收尾工作 ###
 # Lets Fuck
